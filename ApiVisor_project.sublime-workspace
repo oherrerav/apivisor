@@ -1,0 +1,156 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 127.0,
+		"selected_items":
+		[
+			[
+				"py",
+				"Set Syntax: Python"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/urls.py",
+		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/__init__.py",
+		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/settings/__init__.py",
+		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/settings/base.py",
+		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/settings/local.py",
+		"/C/bitbucket/ApiVisor_project/requirements/production.txt",
+		"/C/bitbucket/ApiVisor_project/requirements/local.txt",
+		"/C/bitbucket/ApiVisor_project/requirements/base.txt",
+		"/C/bitbucket/ApiVisor_project/runtime.txt",
+		"/C/bitbucket/ApiVisor_project/requirements.txt",
+		"/C/bitbucket/demarcheRH_project/demarcheRH_project/templates/home.html",
+		"/C/bitbucket/demarcheRH_project/demarcheRH_project/templates/404.html",
+		"/C/bitbucket/demarcheRH_project/demarcheRH_project/personnel/models.py",
+		"/C/bitbucket/demarcheRH_project/demarcheRH_project/templates/500.html",
+		"/C/bitbucket/demarcheRH_project/demarcheRH_project/demarcheRH_project/settings/production.py"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Psy"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 222.0,
+	"status_bar_visible": true
+}

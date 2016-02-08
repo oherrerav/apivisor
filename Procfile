@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath ApiVisor_project ApiVisor_project.wsgi
