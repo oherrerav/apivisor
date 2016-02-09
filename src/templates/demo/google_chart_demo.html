@@ -1,12 +1,4 @@
 {% load staticfiles %}
-<h1>Google Demo{{title}}</h1>
-{{ user }}
-{{ request.user }}
-
-<form method='POST' acion=''> {% csrf_token %}
-{{form.as_p}}
-<input type='submit' value='Sign Up' />
-</from>
  <table id="core_gallery_table">
     <link href="{% static 'css/google_chart_demo.css' %}" rel="stylesheet">
     <tbody><tr>

@@ -20,8 +20,7 @@ urlpatterns = patterns('',
 	# Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),
 	# url(r'^apis/', "apis.views.api_home"),
-
-
+	url(r'^accounts/', include('registration.backends.default.urls')),
 )
 
 # Uncomment the next line to serve media files in dev.

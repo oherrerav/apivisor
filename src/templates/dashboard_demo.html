@@ -1,9 +1,4 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
-{% block head_title %} Welcome | {% endblock %}
-
-  {% block dashboard %}
-            <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header">Dashboard</h1>
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -155,18 +150,3 @@
               </tbody>
             </table>
           </div>
-    
-  {% endblock %}
-   
-    {% block content %}
-    <div class="row">
-      <div class="col-md-3">
-        <h1>{{title}}</h1>
-
-        <form method='POST' acion=''> {% csrf_token %}
-        {{form|crispy}}
-        <input type='submit' class="btn btn-primary" value='Sign Up' />
-        </from>
-      </div>
-    </div>
-  {% endblock %}

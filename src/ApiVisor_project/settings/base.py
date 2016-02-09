@@ -187,6 +187,7 @@ DJANGO_APPS = (
     'django.contrib.admin',
     # 'django.contrib.admindocs',
     'crispy_forms',
+    'registration',
 )
 
 # Apps specific for this project go here.
@@ -238,3 +239,7 @@ WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+LOGIN_REDIRECT_URL ='/'
