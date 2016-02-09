@@ -186,6 +186,7 @@ DJANGO_APPS = (
     # Admin panel and documentation:
     'django.contrib.admin',
     # 'django.contrib.admindocs',
+    'crispy_forms',
 )
 
 # Apps specific for this project go here.
@@ -236,3 +237,4 @@ WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 ########## END WSGI CONFIGURATION
 
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

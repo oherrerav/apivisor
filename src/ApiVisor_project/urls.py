@@ -8,18 +8,19 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', TemplateView.as_view(template_name='home.html')),
+    # url(r'^$', TemplateView.as_view(template_name='home.html')),
+	url(r'^$', "apis.views.home",name='home'),
+	# Examples:
+	# url(r'^$', 'ApiVisor_project.views.home', name='home'),
+	# url(r'^ApiVisor_project/', include('ApiVisor_project.foo.urls')),
 
-    # Examples:
-    # url(r'^$', 'ApiVisor_project.views.home', name='home'),
-    # url(r'^ApiVisor_project/', include('ApiVisor_project.foo.urls')),
+	# Uncomment the admin/doc line below to enable admin documentation:
+	# url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+	# Uncomment the next line to enable the admin:
+	url(r'^admin/', include(admin.site.urls)),
+	# url(r'^apis/', "apis.views.api_home"),
 
-    # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^apis/', "apis.views.api_home"),
 
 )
 
@@ -27,7 +28,7 @@ urlpatterns = patterns('',
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:
-    # import debug_toolbar
-    # urlpatterns += patterns('',
-    #                         url(r'^__debug__/', include(debug_toolbar.urls)),
-    #                         )
+	# import debug_toolbar
+	# urlpatterns += patterns('',
+	#                         url(r'^__debug__/', include(debug_toolbar.urls)),
+	#                         )
