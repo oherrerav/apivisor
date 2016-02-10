@@ -1,6 +1,3 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
-{% block head_title %} Overview | {% endblock %}
 {% load staticfiles %}
 
 <!-- {% block dashboard_demo %} -->
@@ -10,7 +7,7 @@
         <div class="jumbotron">
         <h1>ApiVisor</h1>
         <p class="lead">Create your own DashBoard with any REST webservice data you can be done in a few simple steps. </p>
-        <p class="lead">Our gallery provides a variety of charts designed to address your data visualization needs. These charts are based on pure HTML5/SVG technology (adopting VML for old IE versions), so no plugins are required. All of them are interactive, and many are pannable and zoomable.</p>
+        <p class="lead">Using Google Charts© we can provides a variety of charts designed to address your data visualization needs. These charts are based on pure HTML5/SVG technology (adopting VML for old IE versions), so no plugins are required. All of them are interactive, and many are pannable and zoomable.</p>
         {% if not request.user.is_authenticated %}
           <p><a class="btn btn-lg btn-success" href="{% url 'registration_register' %}" role="button">Sign up today</a>
           </p>

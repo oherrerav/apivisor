@@ -39,8 +39,10 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="{% url 'home' %}">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
+            <li class="active"><a href="{% url 'overview' %}">Overview <span class="sr-only">(current)</span></a></li>
+          {% if request.user.is_authenticated %}
+
+            <li><a href="{% url 'home' %}">Dashboard</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
@@ -56,16 +58,15 @@
             <li><a href="">One more nav</a></li>
             <li><a href="">Another nav item</a></li>
           </ul>
+          {% endif %}
         </div>
-        {% if request.user.is_authenticated %}
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
               {% block dashboard %}
               {% endblock %}
         </div>
-          {% else %}
+
               {% block dashboard_demo %}
               {% endblock %}
-          {% endif %}
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           {% block content %}
           {% endblock %}
