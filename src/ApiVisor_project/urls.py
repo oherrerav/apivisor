@@ -10,6 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # url(r'^$', TemplateView.as_view(template_name='home.html')),
 	url(r'^$', "apis.views.home",name='home'),
+	# url(r'^overview', TemplateView.as_view(template_name='base.html'),name='overview'),
 	# Examples:
 	# url(r'^$', 'ApiVisor_project.views.home', name='home'),
 	# url(r'^ApiVisor_project/', include('ApiVisor_project.foo.urls')),

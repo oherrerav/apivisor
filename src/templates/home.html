@@ -2,10 +2,15 @@
 {% load crispy_forms_tags %}
 {% block head_title %} Welcome | {% endblock %}
 
+{% if request.user.is_authenticated %}
   {% block dashboard %}
+     {% include 'dashboard.html' %}
+  {% endblock %}
+
+{% else %}
+
+  {% block dashboard_demo %}
      {% include 'dashboard_demo.html' %}
   {% endblock %}
 
-  {% block dashboard_demo %}
-    {% include 'demo/google_chart_demo.html' %}
-  {% endblock %}
+{% endif %}
