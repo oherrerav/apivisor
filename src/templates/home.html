@@ -2,6 +2,15 @@
 {% load crispy_forms_tags %}
 {% block head_title %} Welcome | {% endblock %}
 
+{% block side_bar %}
+
+  {% for dashboard in dashboards %}
+      {% if not dashboard.default %}
+          <li><a href="#">{{ dashboard.name }}</a></li>
+      {% endif %}
+  {% endfor %}
+
+{% endblock %}
 
   {% block dashboard %}
   	{% if request.user.is_authenticated %}

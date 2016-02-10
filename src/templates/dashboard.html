@@ -1,5 +1,156 @@
-<!--         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
-          <h1 class="page-header">Dashboard</h1>
+{% load staticfiles %}
+      <link href="{% static 'css/google_chart_demo.css' %}" rel="stylesheet">
+      <script type="text/javascript" src="http://www.google.com/jsapi"></script> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
+    <script type="text/javascript"> 
+              google.load('visualization', '1', {packages: ['table','barchart','columnchart','linechart','piechart','gauge']});
+    </script> 
+ <script type="text/javascript"> 
+    var visualization;
+    function SortAscBySecondColumn(a, b) {
+    if (a[1] === b[1]) {
+        return 0;
+    }
+    else {
+        return (a[1] > b[1]) ? -1 : 1;
+    }
+    }
+    function SortDscBySecondColumn(a, b) {
+    if (a[1] === b[1]) {
+        return 0;
+    }
+    else {
+        return (a[1] > b[1]) ? -1 : 1;
+    }
+    }
+
+    function drawVisualization2() {
+                //     //ajax call to the web service    
+                var options = {Grupos: 'Wip', Cantidas: 'Rows'};
+                var dimension = "Rows";
+                             $.ajax({
+                                 
+                                  url:     'http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname',
+                                  data: {
+                                     format: 'json'
+                                  },
+                                  error: function() {
+                                     console.log("Error");
+                                  },
+                                  dataType: 'json',
+                                success: function(data) {
+                                  var groupsArray = [];
+//                                   var groupsArraySort = [["Groups",dimension]];
+                                $.each(data.Data, function() {
+                                    var groupitem = [this.groupname, this[dimension]];
+                                    groupsArray.push(groupitem);
+                                    });
+                                   groupsArray = groupsArray.sort(SortDscBySecondColumn);
+                                   groupsArray.unshift(["Groups",dimension]);
+                                   var groupsData = google.visualization.arrayToDataTable(groupsArray);
+                                   var chart = new google.visualization.Table(document.getElementById('visualization_Table'));
+                                   chart.draw(groupsData, options);
+//                                   
+//                                    var chart = new google.visualization.BarChart(document.getElementById('visualization_BarChart'));
+//                                   chart.draw(groupsData, options);
+                                   
+                                  },
+                                  type: 'GET'
+                               });}
+    function drawVisualization3() {
+                //     //ajax call to the web service    
+                var options = {Grupos: 'Wip', Cantidas: 'Rows'};
+                var dimension = "Rows";
+                             $.ajax({
+                                 
+                                  url:     'http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname',
+                                  data: {
+                                     format: 'json'
+                                  },
+                                  error: function() {
+                                     console.log("Error");
+                                  },
+                                  dataType: 'json',
+                                success: function(data) {
+                                  var groupsArray = [];
+//                                   var groupsArraySort = [["Groups",dimension]];
+                                $.each(data.Data, function() {
+                                    var groupitem = [this.groupname, this[dimension]];
+                                    groupsArray.push(groupitem);
+                                    });
+                                   groupsArray = groupsArray.sort(SortDscBySecondColumn);
+                                   groupsArray.unshift(["Groups",dimension]);
+                                   var groupsData = google.visualization.arrayToDataTable(groupsArray);
+                                   var chart = new google.visualization.Table(document.getElementById('visualization_Table'));
+                                   chart.draw(groupsData, options);
+//                                   
+//                                    var chart = new google.visualization.BarChart(document.getElementById('visualization_BarChart'));
+//                                   chart.draw(groupsData, options);
+                                   
+                                  },
+                                  type: 'GET'
+                               });}
+    google.setOnLoadCallback(drawVisualization2);
+  
+    function handleQueryResponse2(response) {
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+      }
+    
+      var data = response.getDataTable();
+        $('#visualization_Gauge').html(data);
+      
+  }
+  
+    
+    var gaugeOptions = {min: 0, max: 280, yellowFrom: 200, yellowTo: 250,
+      redFrom: 250, redTo: 280, minorTicks: 5};
+    var gauge;
+
+    function drawGauge() {
+      gaugeData = new google.visualization.DataTable();
+      gaugeData.addColumn('number', 'Engine');
+      gaugeData.addColumn('number', 'Torpedo');
+      gaugeData.addRows(2);
+      gaugeData.setCell(0, 0, 120);
+      gaugeData.setCell(0, 1, 80);
+
+      gauge = new google.visualization.Gauge(document.getElementById('visualization_Gauge'));
+      gauge.draw(gaugeData, gaugeOptions);
+    }
+
+       function changeTemp(dir) {
+      gaugeData.setValue(0, 0, gaugeData.getValue(0, 0) + dir * 25);
+      gaugeData.setValue(0, 1, gaugeData.getValue(0, 1) + dir * 20);
+      gauge.draw(gaugeData, gaugeOptions);
+    }
+    </script> 
+         <h1 class="page-header">Dashboard</h1>
+            <div class="row">
+                <div class="col-sm-4 col-xs-offset-0">
+                <table id="core_gallery_table">
+                    <td id="visualization_Table" class="item_container first">
+                       <!-- {% include 'demo/geo_chart.html' %} -->
+                    </td>
+                </table>
+                </div>
+                <div class="col-sm-4 col-xs-offset-0">
+                <table id="core_gallery_table">
+                    <td class="item_container first">
+                       <!-- {% include 'demo/gauge_chart.html' %} -->
+                    </td>
+                </table>
+                </div>
+                <div class="col-sm-4 col-xs-offset-0">
+                <table id="core_gallery_table">
+                    <td class="item_container first">
+                       <!-- {% include 'demo/pie_chart.html' %} -->
+                    </td>
+                </table>      
+                </div>
+              </div>
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">

@@ -2,8 +2,13 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Api
-from .forms import SignUpForm
-from .models import SignUp
+from .models import ChartVisualization
+from .models import ChartType
+from .models import Chart
+from .models import DashBoard
+# from .models import SignUp
+
+# from .forms import SignUpForm
 
 class ApiModelAdmin(admin.ModelAdmin):
 	list_display = ["name","uri"]
@@ -14,12 +19,16 @@ class ApiModelAdmin(admin.ModelAdmin):
 	class Meta:
 		model = Api
 
-class SignUpAdmin(admin.ModelAdmin):
-	list_display = ["email","full_name","updated"]
-	form = SignUpForm
-	class Meta:
-		model = SignUp
+# class SignUpAdmin(admin.ModelAdmin):
+# 	list_display = ["email","full_name","updated"]
+# 	form = SignUpForm
+# 	class Meta:
+# 		model = SignUp
 
 
 admin.site.register(Api,ApiModelAdmin)
-admin.site.register(SignUp,SignUpAdmin)
+# admin.site.register(SignUp,SignUpAdmin)
+admin.site.register(ChartVisualization)
+admin.site.register(ChartType)
+admin.site.register(Chart)
+admin.site.register(DashBoard)
