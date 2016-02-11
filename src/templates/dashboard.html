@@ -64,17 +64,18 @@ var chartItem = [];
       dashboards =  {
                     "id": '{{ forloop.counter }}',
                     "name": '{{ dashboard.name }}',
-                    "default" : '{{ dashboard.default }}',           
+                    "main" : '{{ dashboard.default }}',           
                     "charts" : chartItem
                   };
         dataApiVisor.dashboards.push(dashboards);
 {% endwith %}
 
     {% endfor %}
-    var abc = JSON.stringify(dataApiVisor);
-    var abcd = JSON.parse(JSON.stringify(dataApiVisor));
-    var x = search(abcd.dashboards,"Two")
+    // var abc = JSON.stringify(dataApiVisor);
+    // var abcd = JSON.parse(JSON.stringify(dataApiVisor));
+    // var x = search(abcd.dashboards,"Two")
     var visualization;
+
     function SortAscBySecondColumn(a, b) {
     if (a[1] === b[1]) {
         return 0;
@@ -83,6 +84,7 @@ var chartItem = [];
         return (a[1] > b[1]) ? -1 : 1;
     }
     }
+
     function SortDscBySecondColumn(a, b) {
     if (a[1] === b[1]) {
         return 0;
@@ -91,19 +93,50 @@ var chartItem = [];
         return (a[1] > b[1]) ? -1 : 1;
     }
     }
-    function search(source, name) {
+
+    function searchByName(source, name) {
     var results;
 
     name = name.toUpperCase();
     results = source.filter(function(entry) {
         return entry.name.toUpperCase().indexOf(name) !== -1;
-    });
+                           });
     return results;
-}
-    function drawVisualization(name, uri, count) {
+    }
+
+    function searchByMainDasboard(source) {
+    var results;
+
+    results = source.filter(function(entry) {
+        return entry.main.toUpperCase().indexOf("TRUE") !== -1;
+                           });
+    return results;
+    }
+
+    function searchByAttribute(source,attr,value) {
+    var results;
+
+    value = value.toUpperCase();
+    results = source.filter(function(entry) {
+        return entry[attr].toUpperCase().indexOf(value) !== -1;
+                           });
+    return results;
+    }
+
+    var dashboardOnShow = searchByMainDasboard(dataApiVisor.dashboards);
+
+
+    function loadDashBoard(dashboardName) {
+
+          dashboardOnShow =  searchByName(dataApiVisor.dashboards,dashboardName);
+          var dashboardsApiUri = dashboardOnShow[0].charts.apiuri.replace(/&amp;/g,"&");
+          dashboardsApiUri =dashboardsApiUri.replace(/&#39;/g,"'");
+          getChartData('hi',dashboardsApiUri,'1');
+    }
+    
+    function getChartData(name, uri, count) {
                 //     //ajax call to the web service    
-                var options = {Grupos: 'Wip', Cantidas: 'Rows'};
-                var dimension = "Rows";
+
                              $.ajax({
                                  
                                   url:  uri,
@@ -114,7 +147,22 @@ var chartItem = [];
                                      console.log("Error");
                                   },
                                   dataType: 'json',
-                                success: function(data) {
+                                 success: function(data) { 
+                                  drawVisualization(data);
+                                  },
+                                  type: 'GET'
+                               });}
+              // google.setOnLoadCallback(
+              //                           drawVisualization('hi','http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname','1')
+              //                         );
+
+              google.setOnLoadCallback(
+                                        getChartData('hi',dashboardOnShow[0].charts.apiuri.replace(/&amp;/g,"&"),'1')
+                                      );
+
+               function drawVisualization(data) {
+                                  var options = {Grupos: 'Wip', Cantidas: 'Rows'};
+                                  var dimension = "Rows";
                                   var groupsArray = [];
                                 $.each(data.Data, function() {
                                     var groupitem = [this.groupname, this[dimension]];
@@ -129,12 +177,7 @@ var chartItem = [];
                                    chart1.draw(groupsData, options);
                                    chart2.draw(groupsData, options)
                                    chart3.draw(groupsData, options)                                
-                                  },
-                                  type: 'GET'
-                               });}
-              google.setOnLoadCallback(
-                                        drawVisualization('hi','http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname','1')
-                                      );
+                                  };
 
     </script> 
          <h1 class="page-header">Dashboard</h1>

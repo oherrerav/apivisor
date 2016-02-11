@@ -6,7 +6,7 @@
 
   {% for dashboard in dashboards %}
       {% if not dashboard.default %}
-          <li><a href="#">{{ dashboard.name }}</a></li>
+          <li><a href="#" onclick="loadDashBoard('{{ dashboard.name }}')">{{ dashboard.name }}</a></li>
       {% endif %}
   {% endfor %}
 
