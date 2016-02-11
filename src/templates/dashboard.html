@@ -136,31 +136,28 @@ var chartItem = [];
     
     function getChartData(name, uri, count) {
                 //     //ajax call to the web service    
-
-                             $.ajax({
-                                 
-                                  url:  uri,
-                                  data: {
-                                     format: 'json'
-                                  },
-                                  error: function() {
-                                     console.log("Error");
-                                  },
-                                  dataType: 'json',
-                                 success: function(data) { 
-                                  drawVisualization(data);
-                                  },
-                                  type: 'GET'
-                               });}
-              // google.setOnLoadCallback(
-              //                           drawVisualization('hi','http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname','1')
-              //                         );
+    var texturi= uri.replace(/&#39;/g,"'");
+                                 $.ajax({
+                                     
+                                      url:  texturi,
+                                      data: {
+                                         format: 'json'
+                                      },
+                                      error: function() {
+                                         console.log("Error");
+                                      },
+                                      dataType: 'json',
+                                     success: function(data) { 
+                                      drawVisualization(data);
+                                      },
+                                      type: 'GET'
+                                   });}
 
               google.setOnLoadCallback(
                                         getChartData('hi',dashboardOnShow[0].charts.apiuri.replace(/&amp;/g,"&"),'1')
                                       );
 
-               function drawVisualization(data) {
+      function drawVisualization(data) {
                                   var options = {Grupos: 'Wip', Cantidas: 'Rows'};
                                   var dimension = "Rows";
                                   var groupsArray = [];
