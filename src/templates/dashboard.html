@@ -15,16 +15,35 @@
 <td>{{ chart.api }}</td>
 {% endfor %} -->
 
-
-<td>{{ api }}</td>
-      <link href="{% static 'css/google_chart_demo.css' %}" rel="stylesheet">
-      <script type="text/javascript" src="http://www.google.com/jsapi"></script> 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-
-    <script type="text/javascript"> 
-              google.load('visualization', '1', {packages: ['table','barchart','columnchart','linechart','piechart','gauge']});
-    </script> 
+ <link href="{% static 'css/google_chart_demo.css' %}" rel="stylesheet">
+ <script type="text/javascript" src="http://www.google.com/jsapi"></script> 
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
  <script type="text/javascript"> 
+              google.load('visualization', '1', {packages: ['table','barchart','columnchart','linechart','piechart','gauge']});
+ </script> 
+ <script type="text/javascript"> 
+  // var my_charts = {{ charts }};
+    var charts = [];
+    {% for chart in charts %}
+        charts.push('{{ chart }}');
+    {% endfor %}
+
+    var apis = [];
+    {% for api in apis %}
+        apis.push('{{ api }}');
+    {% endfor %}
+
+    var chartTypes = [];
+    {% for chartType in chartTypes %}
+        chartTypes.push('{{ chartType }}');
+    {% endfor %}
+
+    var dashboards = [];
+    {% for dashboard in dashboards %}
+        dashboards.push('{{ dashboard }}');
+    {% endfor %}
+
+
     var visualization;
     function SortAscBySecondColumn(a, b) {
     if (a[1] === b[1]) {
@@ -101,8 +120,12 @@
                                    groupsArray = groupsArray.sort(SortDscBySecondColumn);
                                    groupsArray.unshift(["Groups",dimension]);
                                    var groupsData = google.visualization.arrayToDataTable(groupsArray);
-                                   var chart = new google.visualization.Table(document.getElementById('visualization_Table1'));
-                                   chart.draw(groupsData, options);
+                                   var chart1 = new google.visualization.Table(document.getElementById('visualization_Table1'));
+                                   var chart2 = new google.visualization.Table(document.getElementById('visualization_Table2'));
+                                   var chart3 = new google.visualization.Table(document.getElementById('visualization_Table3'));
+                                   chart1.draw(groupsData, options);
+                                   chart2.draw(groupsData, options)
+                                   chart3.draw(groupsData, options)
 //                                   
 //                                    var chart = new google.visualization.BarChart(document.getElementById('visualization_BarChart'));
 //                                   chart.draw(groupsData, options);
@@ -148,7 +171,7 @@
     </script> 
      {% set totalCharts = 3 %}
        {%   for chart in charts  %}      
-          <div>{{ chart.name }} {{ chart.chartType}} {{apis|lookupUri:chart.api }} {{forloop.counter }}</div>
+          <!-- <div>{{ chart.name }} {{ chart.chartType}} {{apis|lookupUri:chart.api }} {{forloop.counter }}</div> -->
             <script> 
                 drawVisualization3('hi','http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname','1');
             </script> 
@@ -164,20 +187,20 @@
                 </div>
                 <div class="col-sm-4 col-xs-offset-0">
                 <table id="core_gallery_table">
-                    <td class="item_container first">
+                    <td id="visualization_Table2" class="item_container first">
                        <!-- {% include 'demo/gauge_chart.html' %} -->
                     </td>
                 </table>
                 </div>
                 <div class="col-sm-4 col-xs-offset-0">
                 <table id="core_gallery_table">
-                    <td class="item_container first">
+                    <td id="visualization_Table3" class="item_container first">
                        <!-- {% include 'demo/pie_chart.html' %} -->
                     </td>
                 </table>      
                 </div>
               </div>
-          <div class="row placeholders">
+<!--           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
               <h4>Label</h4>
@@ -198,7 +221,7 @@
               <h4>Label</h4>
               <span class="text-muted">Something else</span>
             </div>
-          </div>
+          </div> -->
 
           <h2 class="sub-header">Section title</h2>
           <div class="table-responsive">
