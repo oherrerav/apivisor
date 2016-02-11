@@ -1,4 +1,22 @@
 {% load staticfiles %}
+{% load api_extras %}
+
+
+<!-- {% for api in apis %}
+<td>{{ api.name }}</td>
+<td>{{ api.uri }}</td>
+{% endfor %}
+
+
+
+{% for chart in charts %}
+<td>{{ chart.name }}</td>
+<td>{{ chart.chartType }}</td>
+<td>{{ chart.api }}</td>
+{% endfor %} -->
+
+
+<td>{{ api }}</td>
       <link href="{% static 'css/google_chart_demo.css' %}" rel="stylesheet">
       <script type="text/javascript" src="http://www.google.com/jsapi"></script> 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
@@ -58,13 +76,14 @@
                                   },
                                   type: 'GET'
                                });}
-    function drawVisualization3() {
+
+    function drawVisualization3(name, uri, count) {
                 //     //ajax call to the web service    
                 var options = {Grupos: 'Wip', Cantidas: 'Rows'};
                 var dimension = "Rows";
                              $.ajax({
                                  
-                                  url:     'http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname',
+                                  url:  uri,
                                   data: {
                                      format: 'json'
                                   },
@@ -82,7 +101,7 @@
                                    groupsArray = groupsArray.sort(SortDscBySecondColumn);
                                    groupsArray.unshift(["Groups",dimension]);
                                    var groupsData = google.visualization.arrayToDataTable(groupsArray);
-                                   var chart = new google.visualization.Table(document.getElementById('visualization_Table'));
+                                   var chart = new google.visualization.Table(document.getElementById('visualization_Table1'));
                                    chart.draw(groupsData, options);
 //                                   
 //                                    var chart = new google.visualization.BarChart(document.getElementById('visualization_BarChart'));
@@ -91,7 +110,7 @@
                                   },
                                   type: 'GET'
                                });}
-    google.setOnLoadCallback(drawVisualization2);
+    // google.setOnLoadCallback(drawVisualization2);
   
     function handleQueryResponse2(response) {
       if (response.isError()) {
@@ -127,11 +146,18 @@
       gauge.draw(gaugeData, gaugeOptions);
     }
     </script> 
+     {% set totalCharts = 3 %}
+       {%   for chart in charts  %}      
+          <div>{{ chart.name }} {{ chart.chartType}} {{apis|lookupUri:chart.api }} {{forloop.counter }}</div>
+            <script> 
+                drawVisualization3('hi','http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname','1');
+            </script> 
+      {% endfor %}
          <h1 class="page-header">Dashboard</h1>
             <div class="row">
                 <div class="col-sm-4 col-xs-offset-0">
                 <table id="core_gallery_table">
-                    <td id="visualization_Table" class="item_container first">
+                    <td id="visualization_Table1" class="item_container first">
                        <!-- {% include 'demo/geo_chart.html' %} -->
                     </td>
                 </table>
