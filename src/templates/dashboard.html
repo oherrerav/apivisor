@@ -23,26 +23,54 @@
  </script> 
  <script type="text/javascript"> 
   // var my_charts = {{ charts }};
-    var charts = [];
-    {% for chart in charts %}
-        charts.push('{{ chart }}');
-    {% endfor %}
+  /*
+{
+  "id": "1",
+  "dasboard": "Test",
+  "default" : "True",
+   "charts": {"chartItem": [
+      {"id":"1","nombre":"Wip1","Type":"table","apiuri":"uri"},
+      {"id":"2","nombre":"Wip2","Type":"table","apiuri":"uri"},
+      {"id":"3","nombre":"Wip3","Type":"table","apiuri":"uri"}
+    ]
+}
+}
 
-    var apis = [];
-    {% for api in apis %}
-        apis.push('{{ api }}');
-    {% endfor %}
+employees = {
+    accounting: []
+};
 
-    var chartTypes = [];
-    {% for chartType in chartTypes %}
-        chartTypes.push('{{ chartType }}');
-    {% endfor %}
+  */
+var dataApiVisor = {
+                   dashboards:[]
+                 };
+// var dashboards = [[],"charts":[]];
+var chartItem = [];
+// var charts = []
+// dataApiVisor.dashboards = dashboards;
+// dataApiVisor.dashboards.charts = charts; 
 
-    var dashboards = [];
+
     {% for dashboard in dashboards %}
-        dashboards.push('{{ dashboard }}');
-    {% endfor %}
 
+{% with  charts|lookupApi:dashboard.chart  as chartApiName %}     
+   chartItem = {
+                    "id": '{{ forloop.counter }}',
+                     "chart":'{{ dashboard.chart }}',
+                     "type": '{{ charts|lookupCharType:dashboard.chart }}',
+                     "apiuri":'{{ apis|lookupUri:chartApiName}}'
+                      };
+
+      dashboards =  {
+                    "id": '{{ forloop.counter }}',
+                    "dasboard": '{{ dashboard.name }}',
+                    "default" : '{{ dashboard.default }}',           
+                    "charts" : chartItem
+                  };
+        dataApiVisor.dashboards.push(dashboards);
+{% endwith %}
+
+    {% endfor %}
 
     var visualization;
     function SortAscBySecondColumn(a, b) {

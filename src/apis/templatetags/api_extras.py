@@ -33,6 +33,11 @@ def lookupId(d, value):
     return d.get(name=value).id
 
 @register.filter
+def lookupApi(d, value):
+
+    return d.get(name=value).api
+
+@register.filter
 def lookup(d, args):
     arg_list = [arg.strip() for arg in args.split(',')]
     # prefetch = Prefetch(arg_list[0], queryset=arg_list[1], to_attr=arg_list[1])
@@ -52,4 +57,4 @@ def lookupUri(d, value):
 
 @register.filter
 def lookupCharType(d, value):
-      return d.get(name=value).name
+      return d.get(name=value).chartType
