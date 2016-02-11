@@ -56,14 +56,14 @@ var chartItem = [];
 {% with  charts|lookupApi:dashboard.chart  as chartApiName %}     
    chartItem = {
                     "id": '{{ forloop.counter }}',
-                     "chart":'{{ dashboard.chart }}',
+                     "name":'{{ dashboard.chart }}',
                      "type": '{{ charts|lookupCharType:dashboard.chart }}',
                      "apiuri":'{{ apis|lookupUri:chartApiName}}'
                       };
 
       dashboards =  {
                     "id": '{{ forloop.counter }}',
-                    "dasboard": '{{ dashboard.name }}',
+                    "name": '{{ dashboard.name }}',
                     "default" : '{{ dashboard.default }}',           
                     "charts" : chartItem
                   };
@@ -71,7 +71,9 @@ var chartItem = [];
 {% endwith %}
 
     {% endfor %}
-
+    var abc = JSON.stringify(dataApiVisor);
+    var abcd = JSON.parse(JSON.stringify(dataApiVisor));
+    var x = search(abcd.dashboards,"Two")
     var visualization;
     function SortAscBySecondColumn(a, b) {
     if (a[1] === b[1]) {
@@ -89,42 +91,16 @@ var chartItem = [];
         return (a[1] > b[1]) ? -1 : 1;
     }
     }
+    function search(source, name) {
+    var results;
 
-    function drawVisualization2() {
-                //     //ajax call to the web service    
-                var options = {Grupos: 'Wip', Cantidas: 'Rows'};
-                var dimension = "Rows";
-                             $.ajax({
-                                 
-                                  url:     'http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname',
-                                  data: {
-                                     format: 'json'
-                                  },
-                                  error: function() {
-                                     console.log("Error");
-                                  },
-                                  dataType: 'json',
-                                success: function(data) {
-                                  var groupsArray = [];
-//                                   var groupsArraySort = [["Groups",dimension]];
-                                $.each(data.Data, function() {
-                                    var groupitem = [this.groupname, this[dimension]];
-                                    groupsArray.push(groupitem);
-                                    });
-                                   groupsArray = groupsArray.sort(SortDscBySecondColumn);
-                                   groupsArray.unshift(["Groups",dimension]);
-                                   var groupsData = google.visualization.arrayToDataTable(groupsArray);
-                                   var chart = new google.visualization.Table(document.getElementById('visualization_Table'));
-                                   chart.draw(groupsData, options);
-//                                   
-//                                    var chart = new google.visualization.BarChart(document.getElementById('visualization_BarChart'));
-//                                   chart.draw(groupsData, options);
-                                   
-                                  },
-                                  type: 'GET'
-                               });}
-
-    function drawVisualization3(name, uri, count) {
+    name = name.toUpperCase();
+    results = source.filter(function(entry) {
+        return entry.name.toUpperCase().indexOf(name) !== -1;
+    });
+    return results;
+}
+    function drawVisualization(name, uri, count) {
                 //     //ajax call to the web service    
                 var options = {Grupos: 'Wip', Cantidas: 'Rows'};
                 var dimension = "Rows";
@@ -140,7 +116,6 @@ var chartItem = [];
                                   dataType: 'json',
                                 success: function(data) {
                                   var groupsArray = [];
-//                                   var groupsArraySort = [["Groups",dimension]];
                                 $.each(data.Data, function() {
                                     var groupitem = [this.groupname, this[dimension]];
                                     groupsArray.push(groupitem);
@@ -153,57 +128,15 @@ var chartItem = [];
                                    var chart3 = new google.visualization.Table(document.getElementById('visualization_Table3'));
                                    chart1.draw(groupsData, options);
                                    chart2.draw(groupsData, options)
-                                   chart3.draw(groupsData, options)
-//                                   
-//                                    var chart = new google.visualization.BarChart(document.getElementById('visualization_BarChart'));
-//                                   chart.draw(groupsData, options);
-                                   
+                                   chart3.draw(groupsData, options)                                
                                   },
                                   type: 'GET'
                                });}
-    // google.setOnLoadCallback(drawVisualization2);
-  
-    function handleQueryResponse2(response) {
-      if (response.isError()) {
-        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-        return;
-      }
-    
-      var data = response.getDataTable();
-        $('#visualization_Gauge').html(data);
-      
-  }
-  
-    
-    var gaugeOptions = {min: 0, max: 280, yellowFrom: 200, yellowTo: 250,
-      redFrom: 250, redTo: 280, minorTicks: 5};
-    var gauge;
+              google.setOnLoadCallback(
+                                        drawVisualization('hi','http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname','1')
+                                      );
 
-    function drawGauge() {
-      gaugeData = new google.visualization.DataTable();
-      gaugeData.addColumn('number', 'Engine');
-      gaugeData.addColumn('number', 'Torpedo');
-      gaugeData.addRows(2);
-      gaugeData.setCell(0, 0, 120);
-      gaugeData.setCell(0, 1, 80);
-
-      gauge = new google.visualization.Gauge(document.getElementById('visualization_Gauge'));
-      gauge.draw(gaugeData, gaugeOptions);
-    }
-
-       function changeTemp(dir) {
-      gaugeData.setValue(0, 0, gaugeData.getValue(0, 0) + dir * 25);
-      gaugeData.setValue(0, 1, gaugeData.getValue(0, 1) + dir * 20);
-      gauge.draw(gaugeData, gaugeOptions);
-    }
     </script> 
-     {% set totalCharts = 3 %}
-       {%   for chart in charts  %}      
-          <!-- <div>{{ chart.name }} {{ chart.chartType}} {{apis|lookupUri:chart.api }} {{forloop.counter }}</div> -->
-            <script> 
-                drawVisualization3('hi','http://tasweb-staging.tinoapps.p.azurewebsites.net/1.0/BasicWIP/ValuesByQuery/vs/wipattributes?columns=distinct%20groupname,count(*)%20Rows&aggregate=group%20by%20groupname','1');
-            </script> 
-      {% endfor %}
          <h1 class="page-header">Dashboard</h1>
             <div class="row">
                 <div class="col-sm-4 col-xs-offset-0">

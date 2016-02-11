@@ -3,10 +3,98 @@
 	{
 		"selected_items":
 		[
+			[
+				"char",
+				"chartItem"
+			],
+			[
+				"coun",
+				"counter"
+			],
+			[
+				"cha",
+				"CharField"
+			],
+			[
+				"c",
+				"ChartType"
+			],
+			[
+				"m",
+				"Model"
+			],
+			[
+				"ch",
+				"CharField"
+			],
+			[
+				"s",
+				"save"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"Si",
+				"SignUpForm"
+			],
+			[
+				"list",
+				"list_display"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "src/templates/dashboard.html",
+			"settings":
+			{
+				"buffer_size": 15019,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/apis/templatetags/api_extras.py",
+			"settings":
+			{
+				"buffer_size": 1477,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/ApiVisor_project/settings/base.py",
+			"settings":
+			{
+				"buffer_size": 7586,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/ApiVisor_project/settings/local.py",
+			"settings":
+			{
+				"buffer_size": 1462,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/apis/models.py",
+			"settings":
+			{
+				"buffer_size": 2343,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/apis/views.py",
+			"settings":
+			{
+				"buffer_size": 1302,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -36,13 +124,59 @@
 	},
 	"file_history":
 	[
+		"/C/bitbucket/ApiVisor_project/src/apis/templatetags/__init__.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/__init__.py",
+		"/C/bitbucket/ApiVisor_project/src/templates/navbar.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/base.html",
+		"/C/bitbucket/ApiVisor_project/src/apis/models.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/views.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/admin.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/forms.py",
+		"/C/bitbucket/ApiVisor_project/src/templates/home.html",
+		"/C/bitbucket/ApiVisor_project/src/apis/templatetags/api_extras.py",
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/settings/base.py",
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/settings/local.py",
+		"/C/bitbucket/ApiVisor_project/src/templates/dashboard_demo.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/activation_email.txt",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/activation_email.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/activation_email_subject.txt",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/activation_complete.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/home_test.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/registration_complete.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/registration_base.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/activate.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/registration_closed.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/registration_form.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/overview.html",
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/urls.py",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/logout.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/dashboard.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/timeline_chart.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/bar_chart.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/combo_chart.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/histogram_chart.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/geo_chart.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/google_chart_demo.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/pie_chart.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/table_chart.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/column_chart.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/demo/gauge_chart.html",
+		"/C/bitbucket/ApiVisor_project/requirements/local.txt",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/login.html",
+		"/C/Users/adminlocal/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/__init__.py",
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/wsgi.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/apps.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/tests.py",
+		"/C/Users/adminlocal/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/bitbucket/ApiVisor_project/src/templates/base_old.html",
 		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/urls.py",
 		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/__init__.py",
 		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/settings/__init__.py",
 		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/settings/base.py",
 		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/settings/local.py",
 		"/C/bitbucket/ApiVisor_project/requirements/production.txt",
-		"/C/bitbucket/ApiVisor_project/requirements/local.txt",
 		"/C/bitbucket/ApiVisor_project/requirements/base.txt",
 		"/C/bitbucket/ApiVisor_project/runtime.txt",
 		"/C/bitbucket/ApiVisor_project/requirements.txt",
@@ -68,6 +202,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"):\n",
+			"emai",
+			"endif",
+			"not",
+			"star",
+			"href=\"/chart/interactive/docs/gallery/",
+			"labet",
+			"import",
 			"Psy"
 		],
 		"highlight": true,
@@ -76,6 +218,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"href=\"https://developers.google.com/chart/interactive/docs/gallery/"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -86,8 +229,173 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/templates/dashboard.html",
+					"settings":
+					{
+						"buffer_size": 15019,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2081,
+								2081
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 938.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/apis/templatetags/api_extras.py",
+					"settings":
+					{
+						"buffer_size": 1477,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								938,
+								938
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 414.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/ApiVisor_project/settings/base.py",
+					"settings":
+					{
+						"buffer_size": 7586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/ApiVisor_project/settings/local.py",
+					"settings":
+					{
+						"buffer_size": 1462,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1250,
+								1250
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/apis/models.py",
+					"settings":
+					{
+						"buffer_size": 2343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1350,
+								1350
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 414.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/apis/views.py",
+					"settings":
+					{
+						"buffer_size": 1302,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								693,
+								703
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -97,7 +405,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -128,7 +436,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -151,6 +459,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 222.0,
+	"side_bar_width": 286.0,
 	"status_bar_visible": true
 }
