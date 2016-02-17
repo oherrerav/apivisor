@@ -76,17 +76,6 @@ class DashBoard(models.Model):
     def __str__(self):
         return "%s" % self.name
 
-class Event(models.Model):
-    name = models.CharField(max_length=50)
-    event_dates = models.ManyToManyField("EventDate")
-    def __str__(self):
-        return self.name
-
-class EventDate(models.Model):
-    event_date = models.DateField()
-
-    def __str__(self):
-        return "%s" % self.id
 # class SignUp(models.Model):
 #   """this model store the information for SignUp"""
 #   email = models.EmailField()

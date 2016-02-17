@@ -6,11 +6,9 @@ from .models import ChartVisualization
 from .models import ChartType
 from .models import DashBoard
 from .models import Chart
-from .models import Event, EventDate
 # from .models import SignUp
 
 # from .forms import SignUpForm
-from .forms import EventAdminForm
 from .forms import DashBoardAdminForm
 
 class DashBoardAdmin(admin.ModelAdmin):
@@ -73,18 +71,11 @@ class ApiAdmin(admin.ModelAdmin):
 #           return qs
 #       return qs.filter(author=request.user)
 
-class EventAdmin(admin.ModelAdmin):
-	form = EventAdminForm
-	filter_horizontal = ['event_dates']
-
-
 admin.site.register(Api,ApiAdmin)
 # admin.site.register(SignUp,SignUpAdmin)
 admin.site.register(ChartVisualization)
 admin.site.register(ChartType)
 admin.site.register(DashBoard,DashBoardAdmin)
 admin.site.register(Chart,ChartAdmin)
-admin.site.register(Event,EventAdmin)
-admin.site.register(EventDate)
 
 
