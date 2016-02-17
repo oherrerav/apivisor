@@ -59,7 +59,7 @@ class Chart(models.Model):
     #   # return self.name
     #   return u"%s" % self.id
     def __str__(self):
-        return "%s" % self.id
+        return "%s" % self.name
         
 class DashBoard(models.Model):
     """this model store the information for each DashBoard that you define"""

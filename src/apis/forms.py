@@ -39,15 +39,19 @@ class ChartAdminForm(forms.ModelForm):
 			self.fields['apis'].queryset = Api.objects.filter(user=User.objects.filter(pk = user.id))
 
 class DashBoardAdminForm(forms.ModelForm):
-	class Meta:
+	class Meta:	
 		model = DashBoard
 		fields = '__all__'
 		exclude = ['user',]
 
 	def __init__(self,*args, **kwargs):
+		self.user = kwargs.pop('user', None)
 		super(DashBoardAdminForm, self).__init__(*args, **kwargs)
-		user = self.current_user
 		if 'charts' in self.initial:
 			self.fields['charts'].queryset = Chart.objects.filter(Q(pk__in=self.initial['charts']))
 		else:
-			self.fields['charts'].queryset = Chart.objects.filter(user=User.objects.filter(pk = user.id))
+			if self.user:
+				self.fields['charts'].queryset = Chart.objects.filter(user=User.objects.filter(pk = self.user.id))
+			else:
+				user = self.current_user
+				self.fields['charts'].queryset = Chart.objects.filter(user=User.objects.filter(pk = user.id))

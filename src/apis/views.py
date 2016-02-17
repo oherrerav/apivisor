@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .models import Api, DashBoard, Chart, ChartType
 
-from .forms import ChartAdminForm
+from .forms import ChartAdminForm, DashBoardAdminForm
 
 # Create your views here.
 def home(request):
@@ -48,14 +48,24 @@ def home(request):
 # 	return HttpResponse("<h1>Hello!</h1>")
 def settings(request):
 # add a from
-	form = ChartAdminForm(request.POST or None, user=request.user)
-
-	context = {
+	form = None
+	context = {}
+	action = request.GET.get('action')
+	if action == "postChart":
+		form = ChartAdminForm(request.POST or None, user=request.user)
+		context = {
+	   "form": form	} 
+	elif  action == "getChart":
+		context = {}
+	elif action == "postApi":
+		form = ChartAdminForm(request.POST or None, user=request.user)
+		context = {
+	   "form": form	} 
+	elif action == "postDashBoard":
+		form = DashBoardAdminForm(request.POST or None, user=request.user)
+		context = {
 	   "form": form	} 
 
-
-	if form.is_valid():
-		form.save()
 		# instance = form.save(commit=False)
 	# 	# instance.save()
 	# 	# from_email = settings.EMAIL_HOST_USER,
