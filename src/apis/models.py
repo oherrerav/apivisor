@@ -44,7 +44,7 @@ class Chart(models.Model):
     )
     name = models.CharField(max_length=50)
     chartType = models.ForeignKey(ChartType, on_delete=models.CASCADE)
-    api = models.ForeignKey(Api, on_delete=models.CASCADE)
+    apis = models.ForeignKey(Api, on_delete=models.CASCADE)
     size = models.CharField(help_text="size of your chart", max_length=2,choices=CHART_SIZES)
     dataSet = models.CharField(max_length=20)
     attribute = models.CharField(max_length=20)

@@ -9,7 +9,7 @@ from .models import Chart
 # from .models import SignUp
 
 # from .forms import SignUpForm
-from .forms import DashBoardAdminForm
+from .forms import DashBoardAdminForm, ChartAdminForm
 
 class DashBoardAdmin(admin.ModelAdmin):
 	form = DashBoardAdminForm
@@ -20,18 +20,26 @@ class DashBoardAdmin(admin.ModelAdmin):
 		form.current_user = request.user
 		return form
 
-	# def get_queryset(self, request):
-	# 	 qs = super(DashBoardAdmin, self).get_queryset(request)
-	# 	 if request.user.is_superuser:
-	# 		 return qs
-	# 	 return qs.filter(user=request.user)
-
-class ChartAdmin(admin.ModelAdmin):
-	 def get_queryset(self, request):
-		 qs = super(ChartAdmin, self).get_queryset(request)
+	def get_queryset(self, request):
+		 qs = super(DashBoardAdmin, self).get_queryset(request)
 		 if request.user.is_superuser:
 			 return qs
 		 return qs.filter(user=request.user)
+
+class ChartAdmin(admin.ModelAdmin):
+	form = ChartAdminForm
+	# filter_horizontal = ['apis']
+	
+	def get_form(self, request, obj=None,**kwargs):
+		form = super(ChartAdmin, self).get_form(request,obj, **kwargs)
+		form.current_user = request.user
+		return form
+
+	def get_queryset(self, request):
+		qs = super(ChartAdmin, self).get_queryset(request)
+		if request.user.is_superuser:
+			return qs
+		return qs.filter(user=request.user)
 
 
 class ApiAdmin(admin.ModelAdmin):

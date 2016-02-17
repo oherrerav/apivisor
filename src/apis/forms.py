@@ -3,7 +3,7 @@ from datetime import date
 from django.db.models import Q
 from django.contrib.auth.models import User
 
-from .models import Chart, DashBoard
+from .models import Api, Chart, DashBoard
 # from .models import SignUp
 # from .models import Chart,ChartByUser
 
@@ -23,6 +23,16 @@ from .models import Chart, DashBoard
 # 		#     self.fields['chart'].queryset = Chart.objects.filter(Q(pk__in=self.initial['user_charts']) | Q(event_date__gte=date.today()))
 # 		# else:
 # 		self.fields['chart'].queryset = Chart.objects.filter(user='pk')
+class ChartAdminForm(forms.ModelForm):
+	class Meta:
+		model = Chart
+		fields = '__all__'
+
+	def __init__(self,*args, **kwargs):
+		super(ChartAdminForm, self).__init__(*args, **kwargs)
+		user = self.current_user
+		self.fields['apis'].queryset = Api.objects.filter(user=User.objects.filter(pk = user.id))
+
 class DashBoardAdminForm(forms.ModelForm):
 	class Meta:
 		model = DashBoard
