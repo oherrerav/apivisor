@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .models import Api, DashBoard, Chart, ChartType
 
-# from .forms import SignUpForm
+from .forms import ChartAdminForm
 
 # Create your views here.
 def home(request):
@@ -42,6 +42,28 @@ def home(request):
 	# 	context = {"title":"Thank you"}
 
 	return render(request,"home.html",context)
+	# return HttpResponse("<h1>Hello!Home</h1>")
+
+# def api_home(request):
+# 	return HttpResponse("<h1>Hello!</h1>")
+def settings(request):
+# add a from
+	form = ChartAdminForm(request.POST or None, user=request.user)
+
+	context = {
+	   "form": form	} 
+
+
+	if form.is_valid():
+		form.save()
+		# instance = form.save(commit=False)
+	# 	# instance.save()
+	# 	# from_email = settings.EMAIL_HOST_USER,
+	# 	send_mail('Subject here', 'Here is the message. 2.','oherrerav@gmail.com', 
+ #    ['oherrerav@gmail.com'], fail_silently=False)
+	# 	context = {"title":"Thank you"}
+
+	return render(request,"settings.html",context)
 	# return HttpResponse("<h1>Hello!Home</h1>")
 
 # def api_home(request):

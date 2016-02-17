@@ -30,9 +30,13 @@ class ChartAdminForm(forms.ModelForm):
 		exclude = ['user',]
 
 	def __init__(self,*args, **kwargs):
+		self.user = kwargs.pop('user', None)
 		super(ChartAdminForm, self).__init__(*args, **kwargs)
-		user = self.current_user
-		self.fields['apis'].queryset = Api.objects.filter(user=User.objects.filter(pk = user.id))
+		if self.user:
+			self.fields['apis'].queryset = Api.objects.filter(user=User.objects.filter(pk = self.user.id))
+		else:
+			user = self.current_user
+			self.fields['apis'].queryset = Api.objects.filter(user=User.objects.filter(pk = user.id))
 
 class DashBoardAdminForm(forms.ModelForm):
 	class Meta:
