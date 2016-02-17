@@ -50,6 +50,7 @@ class ApiAdmin(admin.ModelAdmin):
 	# search_fields = ["name","uri"]
 	# class Meta:
 	#   model = Api
+	exclude = ['user',]
 	def get_queryset(self, request):
 		 qs = super(ApiAdmin, self).get_queryset(request)
 		 if request.user.is_superuser:

@@ -27,6 +27,7 @@ class ChartAdminForm(forms.ModelForm):
 	class Meta:
 		model = Chart
 		fields = '__all__'
+		exclude = ['user',]
 
 	def __init__(self,*args, **kwargs):
 		super(ChartAdminForm, self).__init__(*args, **kwargs)
@@ -37,6 +38,7 @@ class DashBoardAdminForm(forms.ModelForm):
 	class Meta:
 		model = DashBoard
 		fields = '__all__'
+		exclude = ['user',]
 
 	def __init__(self,*args, **kwargs):
 		super(DashBoardAdminForm, self).__init__(*args, **kwargs)
