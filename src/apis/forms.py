@@ -23,6 +23,13 @@ from .models import Api, Chart, DashBoard
 # 		#     self.fields['chart'].queryset = Chart.objects.filter(Q(pk__in=self.initial['user_charts']) | Q(event_date__gte=date.today()))
 # 		# else:
 # 		self.fields['chart'].queryset = Chart.objects.filter(user='pk')
+
+class ApiAdminForm(forms.ModelForm):
+	class Meta:
+		model = Api
+		fields = '__all__'
+		exclude = ['user',]
+
 class ChartAdminForm(forms.ModelForm):
 	class Meta:
 		model = Chart
