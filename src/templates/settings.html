@@ -2,12 +2,17 @@
 {% load crispy_forms_tags %}
 {% block head_title %} Settings | {% endblock %}
  
-  {% block dashboard %}
-    {% if form %}
-      <form method='POST' acion=''> {% csrf_token %}
-      {{form|crispy}}
-      <input type='submit' value='Save' class = 'btn btn-primary' />
-      </from>
-    {% endif %}
-  {% endblock %}
+ {% block side_bar %}
+ {% endblock %}
+
+	{% block dashboard_demo %}
+	    {% if form %}
+	      <form method='POST' acion=''> {% csrf_token %}
+	      {{form|crispy}}
+	      <input type='submit' value='Save' class = 'btn btn-primary' />
+	      </from>
+	    {% else %}
+			{% include 'table.html' %}
+	    {% endif %}
+  	{% endblock %}
 
