@@ -7,10 +7,16 @@
 
 	{% block content %}
 	    {% if form %}
-	      <form method='POST' acion=''> {% csrf_token %}
-	      {{form|crispy}}
-	      <input type='submit' value='Save' class = 'btn btn-primary' />
-	      </from>
+		<div class="row">
+			  <div class="col-sm-3 col-md-2"></div>
+			  <div class="col-sm-9 col-md-10">
+			      <form method='POST' acion=''> {% csrf_token %}
+			      {{form|crispy}}
+			      <input type='submit' value='Save' class = 'btn btn-primary' />
+			      </from>
+			  </div>
+		</div>
+
 	    {% else %}
 			{% include 'table.html' %}
 	    {% endif %}
