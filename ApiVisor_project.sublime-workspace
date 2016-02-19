@@ -4,8 +4,48 @@
 		"selected_items":
 		[
 			[
+				"EVent",
+				"EventAdminForm"
+			],
+			[
+				"E",
+				"EventDate"
+			],
+			[
+				"ch",
+				"charts"
+			],
+			[
 				"char",
-				"chartItem"
+				"chart"
+			],
+			[
+				"Char",
+				"CharField"
+			],
+			[
+				"mode",
+				"models"
+			],
+			[
+				"das",
+				"dashboardsApiUri"
+			],
+			[
+				"api",
+				"apiuri"
+			],
+			[
+				"ser",
+				"searchByAttribute"
+			],
+			[
+				"da",
+				"dashboards"
+			],
+			[
+				"TRue",
+				"True"
 			],
 			[
 				"coun",
@@ -22,10 +62,6 @@
 			[
 				"m",
 				"Model"
-			],
-			[
-				"ch",
-				"CharField"
 			],
 			[
 				"s",
@@ -48,51 +84,67 @@
 	"buffers":
 	[
 		{
+			"file": "src/templates/table_estable.html",
+			"settings":
+			{
+				"buffer_size": 10709,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "src/templates/dashboard.html",
 			"settings":
 			{
-				"buffer_size": 15019,
+				"buffer_size": 7361,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/apis/templatetags/api_extras.py",
+			"file": "src/templates/home.html",
 			"settings":
 			{
-				"buffer_size": 1477,
+				"buffer_size": 821,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/ApiVisor_project/settings/base.py",
+			"file": "src/templates/table.html",
 			"settings":
 			{
-				"buffer_size": 7586,
-				"line_ending": "Unix"
+				"buffer_size": 7501,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/ApiVisor_project/settings/local.py",
+			"file": "src/templates/base.html",
 			"settings":
 			{
-				"buffer_size": 1462,
-				"line_ending": "Unix"
+				"buffer_size": 3842,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/apis/models.py",
+			"file": "src/templates/settings.html",
 			"settings":
 			{
-				"buffer_size": 2343,
-				"line_ending": "Unix"
+				"buffer_size": 436,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "src/apis/views.py",
 			"settings":
 			{
-				"buffer_size": 1302,
+				"buffer_size": 2286,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/templates/dashboard_demo.html",
+			"settings":
+			{
+				"buffer_size": 2957,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -124,33 +176,40 @@
 	},
 	"file_history":
 	[
+		"/C/bitbucket/ApiVisor_project/src/apis/models.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/admin.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/views.py",
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/settings/local.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/forms.py",
+		"/C/bitbucket/ApiVisor_project/src/templates/settings.html",
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/settings/base.py",
+		"/C/bitbucket/ApiVisor_project/src/templates/home.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/base.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/500.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/navbar.html",
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/urls.py",
+		"/C/bitbucket/ApiVisor_project/src/templates/dashboard.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/registration_form.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/registration/activation_complete.html",
+		"/C/bitbucket/ApiVisor_project/src/templates/home_test.html",
+		"/C/bitbucket/django-relationships-master/relationships/forms.py",
+		"/C/bitbucket/django-relationships-master/relationships/admin.py",
+		"/C/bitbucket/django-relationships-master/relationships/views.py",
+		"/C/bitbucket/django-relationships-master/relationships/models.py",
+		"/C/bitbucket/ApiVisor_project/src/apis/templatetags/api_extras.py",
+		"/C/bitbucket/ApiVisor_project/src/templates/base_old.html",
 		"/C/bitbucket/ApiVisor_project/src/apis/templatetags/__init__.py",
 		"/C/bitbucket/ApiVisor_project/src/apis/__init__.py",
-		"/C/bitbucket/ApiVisor_project/src/templates/navbar.html",
-		"/C/bitbucket/ApiVisor_project/src/templates/base.html",
-		"/C/bitbucket/ApiVisor_project/src/apis/models.py",
-		"/C/bitbucket/ApiVisor_project/src/apis/views.py",
-		"/C/bitbucket/ApiVisor_project/src/apis/admin.py",
-		"/C/bitbucket/ApiVisor_project/src/apis/forms.py",
-		"/C/bitbucket/ApiVisor_project/src/templates/home.html",
-		"/C/bitbucket/ApiVisor_project/src/apis/templatetags/api_extras.py",
-		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/settings/base.py",
-		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/settings/local.py",
 		"/C/bitbucket/ApiVisor_project/src/templates/dashboard_demo.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/registration/activation_email.txt",
 		"/C/bitbucket/ApiVisor_project/src/templates/registration/activation_email.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/registration/activation_email_subject.txt",
-		"/C/bitbucket/ApiVisor_project/src/templates/registration/activation_complete.html",
-		"/C/bitbucket/ApiVisor_project/src/templates/home_test.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/registration/registration_complete.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/registration/registration_base.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/registration/activate.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/registration/registration_closed.html",
-		"/C/bitbucket/ApiVisor_project/src/templates/registration/registration_form.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/overview.html",
-		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/urls.py",
 		"/C/bitbucket/ApiVisor_project/src/templates/registration/logout.html",
-		"/C/bitbucket/ApiVisor_project/src/templates/dashboard.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/demo.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/demo/timeline_chart.html",
 		"/C/bitbucket/ApiVisor_project/src/templates/demo/bar_chart.html",
@@ -170,7 +229,6 @@
 		"/C/bitbucket/ApiVisor_project/src/apis/apps.py",
 		"/C/bitbucket/ApiVisor_project/src/apis/tests.py",
 		"/C/Users/adminlocal/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/C/bitbucket/ApiVisor_project/src/templates/base_old.html",
 		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/urls.py",
 		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/__init__.py",
 		"/C/bitbucket/ApiVisor_project/ApiVisor_project/ApiVisor_project/settings/__init__.py",
@@ -202,6 +260,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"initTable",
+			"home",
+			"Relationship",
+			"many",
+			"ChartTable",
+			" <h2 class=\"sub-header\">Section title</h2>\n          <div class=\"table-responsive\">\n            <table class=\"table table-striped\">\n              <thead>\n                <tr>\n                  <th>#</th>\n                  <th>Header</th>\n                  <th>Header</th>\n                  <th>Header</th>\n                  <th>Header</th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr>\n                  <td>1,001</td>\n                  <td>Lorem</td>\n                  <td>ipsum</td>\n                  <td>dolor</td>\n                  <td>sit</td>\n                </tr>\n                <tr>\n                  <td>1,002</td>\n                  <td>amet</td>\n                  <td>consectetur</td>\n                  <td>adipiscing</td>\n                  <td>elit</td>\n                </tr>\n                <tr>\n                  <td>1,003</td>\n                  <td>Integer</td>\n                  <td>nec</td>\n                  <td>odio</td>\n                  <td>Praesent</td>\n                </tr>\n                <tr>\n                  <td>1,003</td>\n                  <td>libero</td>\n                  <td>Sed</td>\n                  <td>cursus</td>\n                  <td>ante</td>\n                </tr>\n                <tr>\n                  <td>1,004</td>\n                  <td>dapibus</td>\n                  <td>diam</td>\n                  <td>Sed</td>\n                  <td>nisi</td>\n                </tr>\n                <tr>\n                  <td>1,005</td>\n                  <td>Nulla</td>\n                  <td>quis</td>\n                  <td>sem</td>\n                  <td>at</td>\n                </tr>\n                <tr>\n                  <td>1,006</td>\n                  <td>nibh</td>\n                  <td>elementum</td>\n                  <td>imperdiet</td>\n                  <td>Duis</td>\n                </tr>\n                <tr>\n                  <td>1,007</td>\n                  <td>sagittis</td>\n                  <td>ipsum</td>\n                  <td>Praesent</td>\n                  <td>mauris</td>\n                </tr>\n                <tr>\n                  <td>1,008</td>\n                  <td>Fusce</td>\n                  <td>nec</td>\n                  <td>tellus</td>\n                  <td>sed</td>\n                </tr>\n                <tr>\n                  <td>1,009</td>\n                  <td>augue</td>\n                  <td>semper</td>\n                  <td>porta</td>\n                  <td>Mauris</td>\n                </tr>\n                <tr>\n                  <td>1,010</td>\n                  <td>massa</td>\n                  <td>Vestibulum</td>\n                  <td>lacinia</td>\n                  <td>arcu</td>\n                </tr>\n                <tr>\n                  <td>1,011</td>\n                  <td>eget</td>\n                  <td>nulla</td>\n                  <td>Class</td>\n                  <td>aptent</td>\n                </tr>\n                <tr>\n                  <td>1,012</td>\n                  <td>taciti</td>\n                  <td>sociosqu</td>\n                  <td>ad</td>\n                  <td>litora</td>\n                </tr>\n                <tr>\n                  <td>1,013</td>\n                  <td>torquent</td>\n                  <td>per</td>\n                  <td>conubia</td>\n                  <td>nostra</td>\n                </tr>\n                <tr>\n                  <td>1,014</td>\n                  <td>per</td>\n                  <td>inceptos</td>\n                  <td>himenaeos</td>\n                  <td>Curabitur</td>\n                </tr>\n                <tr>\n                  <td>1,015</td>\n                  <td>sodales</td>\n                  <td>ligula</td>\n                  <td>in</td>\n                  <td>libero</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>",
 			"):\n",
 			"emai",
 			"endif",
@@ -218,6 +282,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Chart",
 			"href=\"https://developers.google.com/chart/interactive/docs/gallery/"
 		],
 		"reverse": false,
@@ -229,84 +294,28 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/templates/dashboard.html",
+					"file": "src/templates/table_estable.html",
 					"settings":
 					{
-						"buffer_size": 15019,
+						"buffer_size": 10709,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2081,
-								2081
+								828,
+								828
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 938.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/apis/templatetags/api_extras.py",
-					"settings":
-					{
-						"buffer_size": 1477,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								938,
-								938
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 414.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/ApiVisor_project/settings/base.py",
-					"settings":
-					{
-						"buffer_size": 7586,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -317,45 +326,157 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/ApiVisor_project/settings/local.py",
+					"buffer": 1,
+					"file": "src/templates/dashboard.html",
 					"settings":
 					{
-						"buffer_size": 1462,
+						"buffer_size": 7361,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1250,
-								1250
+								219,
+								219
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/templates/home.html",
+					"settings":
+					{
+						"buffer_size": 821,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								124,
+								104
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/templates/table.html",
+					"settings":
+					{
+						"buffer_size": 7501,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7069,
+								7069
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3364.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "src/apis/models.py",
+					"file": "src/templates/base.html",
 					"settings":
 					{
-						"buffer_size": 2343,
+						"buffer_size": 3842,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1350,
-								1350
+								1475,
+								1475
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/templates/settings.html",
+					"settings":
+					{
+						"buffer_size": 436,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								390,
+								390
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/apis/views.py",
+					"settings":
+					{
+						"buffer_size": 2286,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2286,
+								2286
 							]
 						],
 						"settings":
@@ -364,31 +485,32 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 414.0,
+						"translation.y": 828.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/apis/views.py",
+					"buffer": 7,
+					"file": "src/templates/dashboard_demo.html",
 					"settings":
 					{
-						"buffer_size": 1302,
+						"buffer_size": 2957,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								693,
-								703
+								84,
+								72
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

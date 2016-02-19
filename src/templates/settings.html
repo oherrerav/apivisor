@@ -2,10 +2,10 @@
 {% load crispy_forms_tags %}
 {% block head_title %} Settings | {% endblock %}
  
- {% block side_bar %}
+ {% block side_bars %}
  {% endblock %}
 
-	{% block dashboard_demo %}
+	{% block content %}
 	    {% if form %}
 	      <form method='POST' acion=''> {% csrf_token %}
 	      {{form|crispy}}
