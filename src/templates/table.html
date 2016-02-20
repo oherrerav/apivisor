@@ -33,25 +33,63 @@
   </div>
 </div>
 <script>
-  var dataModelTable = {};
-  var modelItems = [];
-   var Items = [];
-  dataModelTable.modelItems = modelItems;
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+  var dataModelTable = {modelItems:[]};
+  var metaDataModelTable = {modelMetaData:[]}; 
+  // var modelItems = [];
+  // var modelMetaData = [];
+  var jsonString;
+
+
+  // dataModelTable.modelItems = modelItems;
+        var addMeta = true;
         {% for item in model %}
-            modelItems =  {
-                        "id": '{{ forloop.counter }}',
-                        "name": '{{ item.name }}',
-                        "status" : '{{ item.status }}',           
-                        "size" : '{{ item.size }}',
-                        "chartype": '{{ item.chartType }}'
-                      };
-              Items = {  'pk' : '{{ item.pk }}'  }
-              Items = {  'model' : '{{ item.model }}'  }
-              {% for field, value in item.fields.items %}
-                    Items =  {  '{{ field }}' : '{{ value }}' }
-            {% endfor %}
-            dataModelTable.modelItems.push(modelItems);
+            // modelItems =  {
+            //             "id": '{{ forloop.counter }}',
+            //             "name": '{{ item.name }}',
+            //             "status" : '{{ item.status }}',           
+            //             "size" : '{{ item.size }}',
+            //             "chartype": '{{ item.chartType }}'
+            //           };
+              jsonString = '{' +  '"pk" : "{{ item.pk }}"' ;
+            
+              jsonString += ', "model" : "{{ item.model }}"' ;
+        
+              jsonStringMeta = '{' ;
+
+                {% for field, value in item.fields.items %}
+                    jsonString += ', "{{ field }}" : "{{ value }}"';
+                    if ('{{ field }}' != 'name') {
+                            modelMetaData =  {
+                                "field": '{{ field }}',
+                                "title": '{{ field }}'.capitalizeFirstLetter(),
+                                "sortable": 'true',
+                                "align": 'center'
+                              };
+                             if (addMeta) {
+                                    metaDataModelTable.modelMetaData.push(modelMetaData);
+                            }
+                    }
+                    // Items =  {  '{{ field }}' : '{{ value }}' }
+                    // Items.push(Items)
+                {% endfor %}
+                 addMeta = false;
+                 jsonString += '}';
+                 modelItems = JSON.parse(JSON.stringify(jsonString));
+                 dataModelTable.modelItems.push(JSON.parse(modelItems));
+
         {% endfor %}
+
+   modelMetaData  =   {
+                            field: 'operate',
+                            title: 'Item Operate',
+                            align: 'center',
+                            events: 'operateEvents',
+                            formatter: operateFormatter
+                        };
+ metaDataModelTable.modelMetaData.push(modelMetaData);
 
     var $table = $('#table'),
         $remove = $('#remove'),
@@ -79,51 +117,28 @@
                         footerFormatter: totalTextFormatter
                     }, {
                         title: 'Item Detail',
-                        colspan: 3,
+                        colspan: metaDataModelTable.modelMetaData.length,
                         align: 'center'
                     }
                 ],
-                [
-                    {
-                        field: 'chartype',
-                        title: 'Chart Type',
-                        sortable: true,
-                        editable: true,
-                        footerFormatter: totalNameFormatter,
-                        align: 'center'
-                    }, {
-                        field: 'size',
-                        title: 'Size',
-                        sortable: true,
-                        align: 'center'
-                        // ,editable: {
-                        //     type: 'text',
-                        //     title: 'Item Price'
-           //                 , validate: function (value) {
-           //                      value = $.trim(value);
-           //                      if (!value) {
-           //                          return 'This field is required';
-           //                      }
-           //                     // if (!/^$/.test(value)) {
-           //                       //   return 'This field needs to start width $.'
-           //                      //}
-           //                      var data = $table.bootstrapTable('getData'),
-           //                          index = $(this).parents('tr').data('index');
-							    // console.log(data);
-           //                      console.log(data[index]);
-           //                      return '';
-           //                  }
-                        // },
-                        // footerFormatter: totalPriceFormatter
-                    }
-                    // , {
-                    //     field: 'operate',
-                    //     title: 'Item Operate',
-                    //     align: 'center',
-                    //     events: operateEvents,
-                    //     formatter: operateFormatter
-                    // }
-                ]
+                metaDataModelTable.modelMetaData
+
+                //  [
+                //     {
+                //         field: 'chartype',
+                //         title: 'Chart Type',
+                //         sortable: true,
+                //         // editable: true,
+                //         // footerFormatter: totalNameFormatter,
+                //         align: 'center'
+                //     }, {
+                //         field: 'size',
+                //         title: 'Size',
+                //         sortable: true,
+                //         align: 'center'
+                //     }
+                // ]
+
             ],
 			data: dataModelTable.modelItems
         });
@@ -188,11 +203,11 @@
 
     function operateFormatter(value, row, index) {
         return [
-            '<a class="like" href="javascript:void(0)" title="Like">',
-            '<i class="glyphicon glyphicon-heart"></i>',
-            '</a>  ',
-            '<a class="remove" href="javascript:void(0)" title="Remove">',
-            '<i class="glyphicon glyphicon-remove"></i>',
+            // '<a class="like" href="javascript:void(0)" title="Like">',
+            // '<i class="glyphicon glyphicon-heart"></i>',
+            // '</a>  ',
+            '<a class="remove" href="javascript:void(0)" title="Edit">',
+            '<i class="glyphicon glyphicon-edit"></i>',
             '</a>'
         ].join('');
     }
