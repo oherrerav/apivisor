@@ -9,6 +9,9 @@ class Api(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def natural_key(self):
+        return self.name
+
     def __str__(self):
         return self.name
 
@@ -19,6 +22,9 @@ class ChartVisualization(models.Model):
     status = models.BooleanField(default=1)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    
+    def natural_key(self):
+        return self.name
     def __str__(self):
         return self.name
 
@@ -32,6 +38,9 @@ class ChartType (models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
+    def natural_key(self):
+        return self.name
+
     def __str__(self):
         return self.name
 
@@ -54,7 +63,7 @@ class Chart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-
+    
     # def __str__(self):
     #   # return self.name
     #   return u"%s" % self.id

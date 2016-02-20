@@ -58,7 +58,11 @@ def settings(request):
 		context = {
 	   "form": form	} 
 	elif  action == "getChart": 
-		model = serializers.serialize( 'python', Chart.objects.filter(user=request.user), exclude=('user') )
+		model = serializers.serialize( 'python',
+			   							Chart.objects.filter(user=request.user), 
+			   							fields=('name', 'chartType', 'apis', 'size', 'status'),
+			   							use_natural_foreign_keys=True 
+			   						)
 		# model = Chart.objects.filter(user=request.user)
 		context = {'model': model}
 	elif action == "postApi":
