@@ -61,7 +61,7 @@ def settings(request):
 		model = serializers.serialize( 'python',
 			   							Chart.objects.filter(user=request.user), 
 			   							fields=('name', 'chartType', 'apis', 'size', 'status'),
-			   							use_natural_foreign_keys=True 
+			   							use_natural_foreign_keys=True 			
 			   						)
 		# model = Chart.objects.filter(user=request.user)
 		context = {'model': model}

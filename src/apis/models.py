@@ -63,6 +63,13 @@ class Chart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    # def get_by_natural_key(self):
+    #     return self.id
+
+    # def natural_key(self):
+    #     return self.id
+
     
     # def __str__(self):
     #   # return self.name

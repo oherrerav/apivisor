@@ -45,6 +45,8 @@
                         "size" : '{{ item.size }}',
                         "chartype": '{{ item.chartType }}'
                       };
+              Items = {  'pk' : '{{ item.pk }}'  }
+              Items = {  'model' : '{{ item.model }}'  }
               {% for field, value in item.fields.items %}
                     Items =  {  '{{ field }}' : '{{ value }}' }
             {% endfor %}
