@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import Api, DashBoard, Chart, ChartType
+from django.core import serializers
 
 from .forms import ApiAdminForm, ChartAdminForm, DashBoardAdminForm
 
@@ -49,14 +50,17 @@ def home(request):
 def settings(request):
 # add a from
 	form = None
+	model = None
 	context = {}
 	action = request.GET.get('action')
 	if action == "postChart":
 		form = ChartAdminForm(request.POST or None, user=request.user)
 		context = {
 	   "form": form	} 
-	elif  action == "getChart":
-		context = {}
+	elif  action == "getChart": 
+		model = serializers.serialize( 'python', Chart.objects.filter(user=request.user), exclude=('user') )
+		# model = Chart.objects.filter(user=request.user)
+		context = {'model': model}
 	elif action == "postApi":
 		form = ApiAdminForm(request.POST or None)
 		context = {

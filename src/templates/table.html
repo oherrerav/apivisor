@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load api_extras %}
 
 <link rel="stylesheet" href="{% static 'css/bootstrap-table.css' %}">
 <div class="row">
@@ -32,6 +33,24 @@
   </div>
 </div>
 <script>
+  var dataModelTable = {};
+  var modelItems = [];
+   var Items = [];
+  dataModelTable.modelItems = modelItems;
+        {% for item in model %}
+            modelItems =  {
+                        "id": '{{ forloop.counter }}',
+                        "name": '{{ item.name }}',
+                        "status" : '{{ item.status }}',           
+                        "size" : '{{ item.size }}',
+                        "chartype": '{{ item.chartType }}'
+                      };
+              {% for field, value in item.fields.items %}
+                    Items =  {  '{{ field }}' : '{{ value }}' }
+            {% endfor %}
+            dataModelTable.modelItems.push(modelItems);
+        {% endfor %}
+
     var $table = $('#table'),
         $remove = $('#remove'),
         selections = [];
@@ -39,6 +58,7 @@
     function initTable() {
         $table.bootstrapTable({
             height: getHeight(),
+            // height: 400,
             columns: [
                 [
                     {
@@ -48,8 +68,8 @@
                         align: 'center',
                         valign: 'middle'
                     }, {
-                        title: 'Item ID',
-                        field: 'id',
+                        title: 'Name',
+                        field: 'name',
                         rowspan: 2,
                         align: 'center',
                         valign: 'middle',
@@ -63,54 +83,47 @@
                 ],
                 [
                     {
-                        field: 'name',
-                        title: 'Item Name',
+                        field: 'chartype',
+                        title: 'Chart Type',
                         sortable: true,
                         editable: true,
                         footerFormatter: totalNameFormatter,
                         align: 'center'
                     }, {
-                        field: 'price',
-                        title: 'Item Price',
+                        field: 'size',
+                        title: 'Size',
                         sortable: true,
-                        align: 'center',
-                        editable: {
-                            type: 'text',
-                            title: 'Item Price',
-                            validate: function (value) {
-                                value = $.trim(value);
-                                if (!value) {
-                                    return 'This field is required';
-                                }
-                               // if (!/^$/.test(value)) {
-                                 //   return 'This field needs to start width $.'
-                                //}
-                                var data = $table.bootstrapTable('getData'),
-                                    index = $(this).parents('tr').data('index');
-							    console.log(data);
-                                console.log(data[index]);
-                                return '';
-                            }
-                        },
-                        footerFormatter: totalPriceFormatter
-                    }, {
-                        field: 'operate',
-                        title: 'Item Operate',
-                        align: 'center',
-                        events: operateEvents,
-                        formatter: operateFormatter
+                        align: 'center'
+                        // ,editable: {
+                        //     type: 'text',
+                        //     title: 'Item Price'
+           //                 , validate: function (value) {
+           //                      value = $.trim(value);
+           //                      if (!value) {
+           //                          return 'This field is required';
+           //                      }
+           //                     // if (!/^$/.test(value)) {
+           //                       //   return 'This field needs to start width $.'
+           //                      //}
+           //                      var data = $table.bootstrapTable('getData'),
+           //                          index = $(this).parents('tr').data('index');
+							    // console.log(data);
+           //                      console.log(data[index]);
+           //                      return '';
+           //                  }
+                        // },
+                        // footerFormatter: totalPriceFormatter
                     }
+                    // , {
+                    //     field: 'operate',
+                    //     title: 'Item Operate',
+                    //     align: 'center',
+                    //     events: operateEvents,
+                    //     formatter: operateFormatter
+                    // }
                 ]
             ],
-			data: [{
-        id: 1,
-        name: 'Item 1',
-        price: '$1'
-    }, {
-        id: 2,
-        name: 'Item 2',
-        price: '$2'
-    }]
+			data: dataModelTable.modelItems
         });
         // sometimes footer render error.
         setTimeout(function () {
