@@ -53,12 +53,16 @@ String.prototype.capitalizeFirstLetter = function() {
             //             "size" : '{{ item.size }}',
             //             "chartype": '{{ item.chartType }}'
             //           };
-              jsonString = '{' +  '"pk" : "{{ item.pk }}"' ;
+            jsonString = '{' +  '"pk" : "{{ item.pk }}"' ;
             
-              jsonString += ', "model" : "{{ item.model }}"' ;
+            jsonString += ', "model" : "{{ item.model }}"' ;
         
-              jsonStringMeta = '{' ;
-
+            jsonStringMeta = '{' ;
+            // modelMetaData =  {
+            //                     "pk": "{{ item.pk }}",
+            //                     "visible": "false",
+            //                   };
+            // metaDataModelTable.modelMetaData.push(modelMetaData);                        
                 {% for field, value in item.fields.items %}
                     jsonString += ', "{{ field }}" : "{{ value }}"';
                     if ('{{ field }}' != 'name') {
@@ -101,6 +105,14 @@ String.prototype.capitalizeFirstLetter = function() {
             // height: 400,
             columns: [
                 [
+                    {
+                        field: 'pk',
+                        title: 'Pk',
+                        rowspan: 2,
+                        align: 'center',
+                        valign: 'middle',
+                        visible : false
+                    },
                     {
                         field: 'state',
                         checkbox: true,
