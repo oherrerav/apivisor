@@ -93,7 +93,7 @@ class DashBoardAdminForm(forms.ModelForm):
 
 				# if not self.is_superuser=='True':	
 
-		if 'charts' in self.initial:
+		if 'chartss' in self.initial:
 			self.fields['charts'].queryset = Chart.objects.filter(Q(pk__in=self.initial['charts']))
 		else:
 			if self.user:

@@ -67,8 +67,8 @@ class Chart(models.Model):
     # def get_by_natural_key(self):
     #     return self.id
 
-    # def natural_key(self):
-    #     return self.id
+    def natural_key(self):
+        return "%s" % self.name
 
     
     # def __str__(self):
