@@ -7,6 +7,8 @@ from django.core import serializers
 
 from .forms import ApiAdminForm, ChartAdminForm, DashBoardAdminForm
 
+from .models import Setting
+
 # Create your views here.
 def home(request):
 	title = 'Welcome'
@@ -49,39 +51,54 @@ def home(request):
 # 	return HttpResponse("<h1>Hello!</h1>")
 def settings(request):
 # add a from
+	settings = Setting.objects.filter(status=1).order_by('sort')
+	action = None
 	form = None
 	model = None
-	context = {}
+
 	action = request.GET.get('action')
+
+	# if action == 'None':
+	model = serializers.serialize( 'python',
+										DashBoard.objects.filter(user=request.user), 
+										fields=('name', 'default', 'charts', 'size'),
+			   
+										use_natural_foreign_keys=True 			
+									)
+	context = {'settings': settings,
+			   'model' : model,
+			   'action': action
+			 }
 	if action == "postChart":
 		form = ChartAdminForm(request.POST or None, user=request.user)
-		context = {
-	   "form": form	} 
+		context = {'settings': settings,
+	   'form': form	} 
 	elif  action == "getChart": 
 		model = serializers.serialize( 'python',
-			   							Chart.objects.filter(user=request.user), 
-			   							fields=('name', 'chartType', 'apis', 'size', 'status'),
-			   							# 'name', 'chartType', 'apis', 'size', 'status'
-			   							use_natural_foreign_keys=True 			
-			   						)
+										Chart.objects.filter(user=request.user), 
+										fields=('name', 'chartType', 'apis', 'size', 'status'),
+										# 'name', 'chartType', 'apis', 'size', 'status'
+										use_natural_foreign_keys=True 			
+									)
 		# model = Chart.objects.filter(user=request.user)
-		context = {'model': model}
+		context = { 'settings': settings,
+					'model': model}
 	elif action == "postApi":
 		form = ApiAdminForm(request.POST or None)
 		context = {
-	   "form": form	} 
+		'settings': settings,
+		"form": form	} 
+	elif action == "gsetApi":
+		form = ApiAdminForm(request.POST or None)
+		context = {
+		'settings': settings,
+		"form": form	}
+
 	elif action == "postDashBoard":
 		form = DashBoardAdminForm(request.POST or None, user=request.user)
 		context = {
+	   'settings': settings,
 	   "form": form	} 
-
-		# instance = form.save(commit=False)
-	# 	# instance.save()
-	# 	# from_email = settings.EMAIL_HOST_USER,
-	# 	send_mail('Subject here', 'Here is the message. 2.','oherrerav@gmail.com', 
- #    ['oherrerav@gmail.com'], fail_silently=False)
-	# 	context = {"title":"Thank you"}
-
 	return render(request,"settings.html",context)
 	# return HttpResponse("<h1>Hello!Home</h1>")
 

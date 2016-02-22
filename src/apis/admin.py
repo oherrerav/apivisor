@@ -6,10 +6,12 @@ from .models import ChartVisualization
 from .models import ChartType
 from .models import DashBoard
 from .models import Chart
+from .models import Setting
+
 # from .models import SignUp
 
 # from .forms import SignUpForm
-from .forms import DashBoardAdminForm, ChartAdminForm
+from .forms import DashBoardAdminForm, ChartAdminForm, ApiAdminForm
 
 class DashBoardAdmin(admin.ModelAdmin):
 	form = DashBoardAdminForm
@@ -17,7 +19,11 @@ class DashBoardAdmin(admin.ModelAdmin):
 	
 	def get_form(self, request, obj=None,**kwargs):
 		form = super(DashBoardAdmin, self).get_form(request,obj, **kwargs)
+		# self.exclude = []
+		# if not request.user.is_superuser:
+		# 	self.exclude.append('user')
 		form.current_user = request.user
+		form.current_user_is_superuser = request.user.is_superuser
 		return form
 
 	def get_queryset(self, request):
@@ -33,6 +39,7 @@ class ChartAdmin(admin.ModelAdmin):
 	def get_form(self, request, obj=None,**kwargs):
 		form = super(ChartAdmin, self).get_form(request,obj, **kwargs)
 		form.current_user = request.user
+		form.current_user_is_superuser = request.user.is_superuser
 		return form
 
 	def get_queryset(self, request):
@@ -50,7 +57,15 @@ class ApiAdmin(admin.ModelAdmin):
 	# search_fields = ["name","uri"]
 	# class Meta:
 	#   model = Api
-	exclude = ['user',]
+	# exclude = ['user',]
+	form = ApiAdminForm
+	
+	def get_form(self, request, obj=None,**kwargs):
+		form = super(ApiAdmin, self).get_form(request,obj, **kwargs)
+		form.current_user = request.user
+		form.current_user_is_superuser = request.user.is_superuser
+		return form
+
 	def get_queryset(self, request):
 		 qs = super(ApiAdmin, self).get_queryset(request)
 		 if request.user.is_superuser:
@@ -86,5 +101,6 @@ admin.site.register(ChartVisualization)
 admin.site.register(ChartType)
 admin.site.register(DashBoard,DashBoardAdmin)
 admin.site.register(Chart,ChartAdmin)
+admin.site.register(Setting)
 
 

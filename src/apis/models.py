@@ -87,8 +87,16 @@ class DashBoard(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return "%s" % self.name
+
+class Setting(models.Model):
+    """this model store the information for configuration bar DashBoard that you define"""
+    name = models.CharField(max_length=50)
+    sort = models.PositiveSmallIntegerField()
+    call = models.CharField(max_length=100)
+    status = models.BooleanField(default=1)
+
     def __str__(self):
         return "%s" % self.name
 

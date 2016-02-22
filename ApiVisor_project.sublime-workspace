@@ -131,7 +131,7 @@
 			"file": "src/templates/table.html",
 			"settings":
 			{
-				"buffer_size": 9131,
+				"buffer_size": 9799,
 				"line_ending": "Windows"
 			}
 		},
@@ -157,6 +157,30 @@
 			{
 				"buffer_size": 821,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/ApiVisor_project/settings/base.py",
+			"settings":
+			{
+				"buffer_size": 7586,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/ApiVisor_project/settings/production.py",
+			"settings":
+			{
+				"buffer_size": 2484,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/ApiVisor_project/settings/local.py",
+			"settings":
+			{
+				"buffer_size": 1466,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -188,6 +212,8 @@
 	},
 	"file_history":
 	[
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/__init__.py",
+		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/settings/__init__.py",
 		"/C/bitbucket/ApiVisor_project/src/apis/forms.py",
 		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/settings/base.py",
 		"/C/bitbucket/ApiVisor_project/src/apis/admin.py",
@@ -239,7 +265,6 @@
 		"/C/bitbucket/ApiVisor_project/requirements/local.txt",
 		"/C/bitbucket/ApiVisor_project/src/templates/registration/login.html",
 		"/C/Users/adminlocal/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
-		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/__init__.py",
 		"/C/bitbucket/ApiVisor_project/src/ApiVisor_project/wsgi.py",
 		"/C/bitbucket/ApiVisor_project/src/apis/apps.py",
 		"/C/bitbucket/ApiVisor_project/src/apis/tests.py",
@@ -275,6 +300,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"LOCAL.py",
+			"local",
 			"3",
 			"operateEvents",
 			"replacer	",
@@ -380,15 +407,15 @@
 					"file": "src/templates/table.html",
 					"settings":
 					{
-						"buffer_size": 9131,
+						"buffer_size": 9799,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4700,
-								4700
+								4232,
+								4232
 							]
 						],
 						"settings":
@@ -398,7 +425,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1780.0,
+						"translation.y": 1689.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -480,6 +507,86 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/ApiVisor_project/settings/base.py",
+					"settings":
+					{
+						"buffer_size": 7586,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6070,
+								6070
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3293.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/ApiVisor_project/settings/production.py",
+					"settings":
+					{
+						"buffer_size": 2484,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/ApiVisor_project/settings/local.py",
+					"settings":
+					{
+						"buffer_size": 1466,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

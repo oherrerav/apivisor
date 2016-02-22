@@ -2,8 +2,17 @@
 {% load crispy_forms_tags %}
 {% block head_title %} Settings | {% endblock %}
  
- {% block side_bars %}
- {% endblock %}
+{% block side_bar %}
+
+  {% for config in settings %}
+      {% if forloop.counter  = 1  %}
+          <li class="active"><a href="?action={{ config.call }}" onclick="">{{ config.name }}</a></li>
+      {% else %}
+          <li><a href="?action={{ config.call }}" onclick="">{{ config.name }} </a></li>     
+      {% endif %}
+  {% endfor %}
+
+{% endblock %}
 
 	{% block content %}
 	    {% if form %}
