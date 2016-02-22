@@ -64,7 +64,9 @@ String.prototype.capitalizeFirstLetter = function() {
             //                   };
             // metaDataModelTable.modelMetaData.push(modelMetaData);                        
                 {% for field, value in item.fields.items %}
-                    jsonString += ', "{{ field }}" : "{{ value }}"';
+                    jsonString += ', "{{ field }}" :"';
+                    jsonString +=  "{{ value|safe }}";
+                    jsonString += '"';
                     if ('{{ field }}' != 'name') {
                             modelMetaData =  {
                                 "field": '{{ field }}',
