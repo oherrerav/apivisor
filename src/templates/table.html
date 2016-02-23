@@ -117,7 +117,7 @@ String.prototype.capitalizeFirstLetter = function() {
 
     function initTable() {
         $table.bootstrapTable({
-            height: getHeight() - getHeight()*0.20,
+            height: getHeight() - getHeight()*0.25,
             // height: 400,
             columns: [
                 [
@@ -203,7 +203,7 @@ String.prototype.capitalizeFirstLetter = function() {
         });
         $(window).resize(function () {
             $table.bootstrapTable('resetView', {
-                height: getHeight()
+                height: getHeight() - getHeight()*0.25
             });
         });
     }
