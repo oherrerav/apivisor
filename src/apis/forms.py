@@ -93,19 +93,19 @@ class DashBoardAdminForm(forms.ModelForm):
 
 				# if not self.is_superuser=='True':	
 
-		if 'chartss' in self.initial:
-			self.fields['charts'].queryset = Chart.objects.filter(Q(pk__in=self.initial['charts']))
-		else:
-			if self.user:
-				self.fields['charts'].queryset = Chart.objects.filter(user=User.objects.filter(pk = self.user.id))
+		# if 'chartss' in self.initial:
+		# 	self.fields['charts'].queryset = Chart.objects.filter(Q(pk__in=self.initial['charts']))
+		# else:
+		if self.user:
+			self.fields['charts'].queryset = Chart.objects.filter(user=User.objects.filter(pk = self.user.id))
 				# self.exclude.append('user',)
 				# self.exclude = ['user',]
-			else:
-				user = self.current_user
+		else:
+			user = self.current_user
 				# superu = self.is_superuser
 				# exclude.append('user',)
 
-				self.fields['charts'].queryset = Chart.objects.filter(user=User.objects.filter(pk = user.id))
+			self.fields['charts'].queryset = Chart.objects.filter(user=User.objects.filter(pk = user.id))
 				# # if not superu:
 				# if  current_user_is_superuser== true:					
 				# 	exclude.append('user',)

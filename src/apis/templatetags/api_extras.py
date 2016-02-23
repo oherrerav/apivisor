@@ -1,5 +1,8 @@
 from django import template
- 
+
+import datetime
+from django.template.defaultfilters import stringfilter
+
 register = template.Library()
  
 class SetVarNode(template.Node):
@@ -58,3 +61,27 @@ def lookupUri(d, value):
 @register.filter
 def lookupCharType(d, value):
       return d.get(name=value).chartType
+
+@register.filter
+def get_type(value):
+    return type(value)
+
+@stringfilter
+def parse_date(date_string, format):
+    """
+    Return a datetime corresponding to date_string, parsed according to format.
+
+    For example, to re-display a date string in another format::
+
+        {{ "01/01/1970"|parse_date:"%m/%d/%Y"|date:"F jS, Y" }}
+
+    """
+    try:
+        # return datetime.strptime(date_string, format)
+                        #         // "2009-06-11 17:02:09+0000"
+                        # // 2016-02-16 04:45:45.668171+00:0
+        return datetime.datetime.strptime(date_string, "%Y-%m-%d %H:%M:%S.%f+00:00")
+    except ValueError:
+        return None
+
+register.filter(parse_date)

@@ -5,6 +5,7 @@ class Api(models.Model):
     """this model store the definition for the Apis"""
     name = models.CharField(max_length=50)
     uri = models.CharField(max_length=500)
+    status = models.BooleanField(default=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -69,7 +70,17 @@ class Chart(models.Model):
 
     def natural_key(self):
         return "%s" % self.name
+        
+    # def convertDatetimeToString(self):
+    #     DATE_FORMAT = "%Y-%m-%d" 
+    #     TIME_FORMAT = "%H:%M:%S"
 
+    #     if isinstance(o, datetime.date):
+    #         return self.strftime(DATE_FORMAT)
+    #     elif isinstance(o, datetime.time):
+    #         return self.strftime(TIME_FORMAT)
+    #     elif isinstance(o, datetime.datetime):
+    #         return self.strftime("%s %s" % (DATE_FORMAT, TIME_FORMAT))
     
     # def __str__(self):
     #   # return self.name
@@ -83,6 +94,7 @@ class DashBoard(models.Model):
     default =  models.BooleanField()
     status = models.BooleanField(default=1)
     charts = models.ManyToManyField(Chart)
+    status = models.BooleanField(default=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

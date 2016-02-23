@@ -45,6 +45,9 @@ String.prototype.capitalizeFirstLetter = function() {
 
   // dataModelTable.modelItems = modelItems;
         var addMeta = true;
+        
+        var field2format = "{{ field2format|safe }}";
+
         {% for item in model %}
             // modelItems =  {
             //             "id": '{{ forloop.counter }}',
@@ -65,7 +68,18 @@ String.prototype.capitalizeFirstLetter = function() {
             // metaDataModelTable.modelMetaData.push(modelMetaData);                        
                 {% for field, value in item.fields.items %}
                     jsonString += ', "{{ field }}" :"';
-                    jsonString +=  "{{ value|safe }}";
+
+                     if ( field2format.indexOf('{{ field }}') >= 0) {
+
+                        jsonString += "{{value|safe|parse_date:'%m/%d/%Y'|date:'t-b-y H:i' }}";
+
+                     }
+                     else {
+
+                         jsonString +=  "{{ value|safe }}";
+                     }
+
+                   
                     jsonString += '"';
                     if ('{{ field }}' != 'name') {
                             modelMetaData =  {

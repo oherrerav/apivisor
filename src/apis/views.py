@@ -51,54 +51,92 @@ def home(request):
 # 	return HttpResponse("<h1>Hello!</h1>")
 def settings(request):
 # add a from
-	settings = Setting.objects.filter(status=1).order_by('sort')
+	field2format =  'updated, created, added'
+
+	setting = Setting.objects.filter(status=1).order_by('sort')
 	action = None
 	form = None
 	model = None
 
 	action = request.GET.get('action')
+	# model = serializers.serialize( 'python',
+	# 										DashBoard.objects.filter(user=request.user), 
+	# 										fields=('name', 'default', 'charts', 'size'),
+				   
+	# 										use_natural_foreign_keys=True 			
+	# 									)
+	# context = {'settings': settings,
+	# 			   'model' : model,
+	# 			   'action': action
+	# 			 }
+	if action == None:
+		model = serializers.serialize( 'python',
+											DashBoard.objects.filter(user=request.user), 
+											fields=('name', 'default', 'charts', 'size', 'status', 'updated'),
+				   
+											use_natural_foreign_keys=True 			
+										)
+		context = {'settings': setting,
+				   'model' : model,
+				   'field2format': field2format
+				 }
 
-	# if action == 'None':
-	model = serializers.serialize( 'python',
-										DashBoard.objects.filter(user=request.user), 
-										fields=('name', 'default', 'charts', 'size'),
-			   
-										use_natural_foreign_keys=True 			
-									)
-	context = {'settings': settings,
-			   'model' : model,
-			   'action': action
-			 }
 	if action == "postChart":
 		form = ChartAdminForm(request.POST or None, user=request.user)
-		context = {'settings': settings,
-	   'form': form	} 
+		context = {'settings': setting,
+	   'form': form,
+	   'field2format': field2format} 
+
 	elif  action == "getChart": 
 		model = serializers.serialize( 'python',
 										Chart.objects.filter(user=request.user), 
-										fields=('name', 'chartType', 'apis', 'size', 'status'),
+										fields=('name', 'chartType', 'apis', 'size', 'status', 'updated'),
 										# 'name', 'chartType', 'apis', 'size', 'status'
 										use_natural_foreign_keys=True 			
 									)
 		# model = Chart.objects.filter(user=request.user)
-		context = { 'settings': settings,
-					'model': model}
+		context = { 'settings': setting,
+					'model': model,
+				    'field2format': field2format}
+
 	elif action == "postApi":
 		form = ApiAdminForm(request.POST or None)
 		context = {
-		'settings': settings,
-		"form": form	} 
-	elif action == "gsetApi":
-		form = ApiAdminForm(request.POST or None)
-		context = {
-		'settings': settings,
-		"form": form	}
+		'settings': setting,
+		'form': form,
+		'field2format': field2format	} 
+
+	elif action == "getApi":
+		model = serializers.serialize( 'python',
+											Api.objects.filter(user=request.user), 
+											fields=('name', 'uri', 'status', 'updated'),
+				   
+											use_natural_foreign_keys=True 			
+										)
+		context = {'settings': setting,
+				   'model' : model,
+				   'field2format': field2format
+				 }
 
 	elif action == "postDashBoard":
 		form = DashBoardAdminForm(request.POST or None, user=request.user)
 		context = {
-	   'settings': settings,
-	   "form": form	} 
+	   'settings': setting,
+	   'form': form,
+	   'field2format': field2format	} 		
+
+	elif action == "getDashBoard":
+		model = serializers.serialize( 'python',
+											DashBoard.objects.filter(user=request.user), 
+											fields=('name', 'default', 'charts', 'size', 'status', 'updated'),
+				   
+											use_natural_foreign_keys=True 			
+										)
+		context = {'settings': setting,
+				   'model' : model,
+				   'field2format': field2format
+				 }
+
 	return render(request,"settings.html",context)
 	# return HttpResponse("<h1>Hello!Home</h1>")
 
