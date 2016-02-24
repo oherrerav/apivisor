@@ -62,6 +62,7 @@ def settings(request):
 		action = None
 		form = None
 		model = None
+		pk = None
 		# model = serializers.serialize( 'python',
 		# 											DashBoard.objects.all(), 
 		# 											fields=('name', 'default', 'charts', 'size', 'status', 'updated'),
@@ -72,6 +73,7 @@ def settings(request):
 		# 			'field2format': field2format
 		# 					 }
 		action = request.GET.get('action')
+		modelItemPk = request.GET.get('pk')
 		# model = serializers.serialize( 'python',
 		# 										DashBoard.objects.filter(user=request.user), 
 		# 										fields=('name', 'default', 'charts', 'size'),
@@ -102,16 +104,22 @@ def settings(request):
 		   'field2format': field2format} 
 
 		elif  action == "getChart": 
-			model = serializers.serialize( 'python',
-											Chart.objects.filter(user=request.user), 
-											fields=('name', 'chartType', 'apis', 'size', 'status', 'updated'),
-											# 'name', 'chartType', 'apis', 'size', 'status'
-											use_natural_foreign_keys=True 			
-										)
-			# model = Chart.objects.filter(user=request.user)
-			context = { 'settings': setting,
-						'model': model,
-					    'field2format': field2format}
+			if modelItemPk == None:
+				model = serializers.serialize( 'python',
+												Chart.objects.filter(user=request.user), 
+												fields=('name', 'chartType', 'apis', 'size', 'status', 'updated'),
+												# 'name', 'chartType', 'apis', 'size', 'status'
+												use_natural_foreign_keys=True 			
+											)
+				# model = Chart.objects.filter(user=request.user)
+				context = { 'settings': setting,
+							'model': model,
+						    'field2format': field2format}
+			else:
+				form = ChartAdminForm(instance=Chart.objects.get(pk=modelItemPk),user=request.user)
+				context = {'settings': setting,
+			   'form': form,
+			   'field2format': field2format} 
 
 		elif action == "postApi":
 			form = ApiAdminForm(request.POST or None)

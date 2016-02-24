@@ -53,14 +53,17 @@ class ChartAdminForm(forms.ModelForm):
 		meta = getattr(self, 'Meta', None)
 		exclude = getattr(meta, 'exclude', [])
 
-		if (not self.current_user_is_superuser):					
-			exclude.append('user',)
+		# if (not self.current_user_is_superuser):					
+		# 	exclude.append('user',)
 
+		# if (not self.user.is_superuser):					
+		# exclude.append('user',)
+		
 		if self.user:
 			self.fields['apis'].queryset = Api.objects.filter(user=User.objects.filter(pk = self.user.id))
-		else:
-			user = self.current_user
-			self.fields['apis'].queryset = Api.objects.filter(user=User.objects.filter(pk = user.id))
+		# else:
+		# 	user = self.current_user
+		# 	self.fields['apis'].queryset = Api.objects.filter(user=User.objects.filter(pk = user.id))
 
 class DashBoardAdminForm(forms.ModelForm):
 	class Meta:	

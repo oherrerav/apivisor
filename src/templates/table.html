@@ -241,15 +241,17 @@ String.prototype.capitalizeFirstLetter = function() {
     }
 
     window.operateEvents = {
-        'click .like': function (e, value, row, index) {
-            alert('You click like action, row: ' + JSON.stringify(row));
-        },
+        // 'click .like': function (e, value, row, index) {
+        //     alert('You click like action, row: ' + JSON.stringify(row));
+        // },
         'click .edit': function (e, value, row, index) {
             // $table.bootstrapTable('remove', {
             //     field: 'id',
             //     values: [row.id]
             // });
-                alert('You click like action, row: ' + JSON.stringify(row))
+             // $.get('settings');//?action='+[row.model]); //+'pk='+[row.pk]);
+            $(location).attr('href',location +'&pk='+[row.pk]);
+                // alert('You click like action, row: ' + JSON.stringify(row) +' '+[row.model]+[row.pk]+'/')
         }
     };
 
