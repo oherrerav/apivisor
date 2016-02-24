@@ -78,7 +78,9 @@
           {% block content %}
           {% endblock %}
            <!-- </div> -->
-  {% include 'navbar_botton.html' %}
+          {% if request.user.is_authenticated %}
+            {% include 'navbar_botton.html' %}
+          {% endif %}
         </div>
     </div>
  <!-- Bootstrap core JavaScript
